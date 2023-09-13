@@ -31,6 +31,9 @@ class Clients
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
+    #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
+    private ?Demandes $demandes = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,23 @@ class Clients
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getDemandes(): ?Demandes
+    {
+        return $this->demandes;
+    }
+
+    public function setDemandes(Demandes $demandes): static
+    {
+        // set the owning side of the relation if necessary
+        if ($demandes->getClient() !== $this) {
+            $demandes->setClient($this);
+        }
+
+        $this->demandes = $demandes;
 
         return $this;
     }

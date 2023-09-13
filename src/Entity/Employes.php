@@ -28,6 +28,9 @@ class Employes
     #[ORM\Column(length: 255)]
     private ?string $role = null;
 
+    #[ORM\OneToOne(mappedBy: 'employe', cascade: ['persist', 'remove'])]
+    private ?Operations $operations = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,23 @@ class Employes
     public function setRole(string $role): static
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getOperations(): ?Operations
+    {
+        return $this->operations;
+    }
+
+    public function setOperations(Operations $operations): static
+    {
+        // set the owning side of the relation if necessary
+        if ($operations->getEmploye() !== $this) {
+            $operations->setEmploye($this);
+        }
+
+        $this->operations = $operations;
 
         return $this;
     }

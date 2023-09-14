@@ -23,6 +23,7 @@ class Prestations
     private ?demandes $demandes = null;
 
     #[ORM\Column(length: 255)]
+    
     private ?string $nom = null;
 
     public function getId(): ?int

@@ -5,8 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Clients;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker;
-
+use Faker\Factory as Faker;
 class Client extends Fixture
 {
     public function load(ObjectManager $manager): void
@@ -14,13 +13,14 @@ class Client extends Fixture
         $faker = Faker::create('fr_FR');
 
         for ($i=0; $i < 15; $i++) { 
+            
             $client = new Clients();
-            $client->setNom('Gacem');
-            $client->setPrenom('Nassim');
-            $client->setAdresse('33 avenue de la haie');
-            $client->setEmail('lolipop@gmail.com');
-            $client->setTel('064587812');
-            $client->setPassword('rex2564');
+            $client->setNom($faker->firstName);
+            $client->setPrenom($faker->lastName);
+            $client->setAdresse($faker->address);
+            $client->setEmail($faker->email);
+            $client->setTel($faker->phoneNumber);
+            $client->setPassword($faker->password);
 
             $manager->persist($client);
         }

@@ -22,6 +22,9 @@ class Prestations
     #[ORM\OneToOne(mappedBy: 'prestation', cascade: ['persist', 'remove'])]
     private ?demandes $demandes = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,6 +67,18 @@ class Prestations
         }
 
         $this->demandes = $demandes;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }

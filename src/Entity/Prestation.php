@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PrestationsRepository;
+use App\Repository\PrestationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PrestationsRepository::class)]
-class Prestations
+#[ORM\Entity(repositoryClass: PrestationRepository::class)]
+class Prestation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,7 +20,7 @@ class Prestations
     private ?string $description = null;
 
     #[ORM\OneToOne(mappedBy: 'prestation', cascade: ['persist', 'remove'])]
-    private ?demandes $demandes = null;
+    private ?Demande $Demande = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -54,19 +54,19 @@ class Prestations
         return $this;
     }
 
-    public function getdemandes(): ?demandes
+    public function getDemande(): ?Demande
     {
-        return $this->demandes;
+        return $this->Demande;
     }
 
-    public function setdemandes(demandes $demandes): static
+    public function setDemande(Demande $Demande): static
     {
         // set the owning side of the relation if necessary
-        if ($demandes->getPrestation() !== $this) {
-            $demandes->setPrestation($this);
+        if ($Demande->getPrestation() !== $this) {
+            $Demande->setPrestation($this);
         }
 
-        $this->demandes = $demandes;
+        $this->Demande = $Demande;
 
         return $this;
     }

@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\OperationsRepository;
+use App\Repository\OperationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: OperationsRepository::class)]
-class Operations
+#[ORM\Entity(repositoryClass: OperationRepository::class)]
+class Operation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,11 +18,11 @@ class Operations
 
     #[ORM\ManyToOne(inversedBy: 'operation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Demandes $demandes = null;
+    private ?Demande $Demande = null;
 
-    #[ORM\OneToOne(inversedBy: 'operations', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'Operation', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Employes $employe = null;
+    private ?Employe $employe = null;
 
     public function getId(): ?int
     {
@@ -41,24 +41,24 @@ class Operations
         return $this;
     }
 
-    public function getDemandes(): ?Demandes
+    public function getDemande(): ?Demande
     {
-        return $this->demandes;
+        return $this->Demande;
     }
 
-    public function setDemandes(?Demandes $demandes): static
+    public function setDemande(?Demande $Demande): static
     {
-        $this->demandes = $demandes;
+        $this->Demande = $Demande;
 
         return $this;
     }
 
-    public function getEmploye(): ?Employes
+    public function getEmploye(): ?Employe
     {
         return $this->employe;
     }
 
-    public function setEmploye(Employes $employe): static
+    public function setEmploye(Employe $employe): static
     {
         $this->employe = $employe;
 

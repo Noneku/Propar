@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\DemandesRepository;
+use App\Repository\DemandeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DemandesRepository::class)]
-class Demandes
+#[ORM\Entity(repositoryClass: DemandeRepository::class)]
+class Demande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,14 +21,14 @@ class Demandes
 
     #[ORM\OneToOne(inversedBy: 'demande', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Prestations $prestation = null;
+    private ?Prestation $prestation = null;
     
 
-    #[ORM\OneToOne(inversedBy: 'demandes', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'Demande', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Clients $client = null;
+    private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'demandes', targetEntity: Operations::class)]
+    #[ORM\OneToMany(mappedBy: 'Demande', targetEntity: Operation::class)]
     private Collection $operation;
 
     public function __construct()
@@ -53,24 +53,24 @@ class Demandes
         return $this;
     }
 
-    public function getPrestation(): ?Prestations
+    public function getPrestation(): ?Prestation
     {
         return $this->prestation;
     }
 
-    public function setPrestation(Prestations $prestation): static
+    public function setPrestation(Prestation $prestation): static
     {
         $this->prestation = $prestation;
 
         return $this;
     }
 
-    public function getClient(): ?Clients
+    public function getClient(): ?Client
     {
         return $this->client;
     }
 
-    public function setClient(Clients $client): static
+    public function setClient(Client $client): static
     {
         $this->client = $client;
 
@@ -78,29 +78,29 @@ class Demandes
     }
 
     /**
-     * @return Collection<int, Operations>
+     * @return Collection<int, Operation>
      */
     public function getOperation(): Collection
     {
         return $this->operation;
     }
 
-    public function addOperation(Operations $operation): static
+    public function addOperation(Operation $operation): static
     {
         if (!$this->operation->contains($operation)) {
             $this->operation->add($operation);
-            $operation->setDemandes($this);
+            $operation->setDemande($this);
         }
 
         return $this;
     }
 
-    public function removeOperation(Operations $operation): static
+    public function removeOperation(Operation $operation): static
     {
         if ($this->operation->removeElement($operation)) {
             // set the owning side to null (unless already changed)
-            if ($operation->getDemandes() === $this) {
-                $operation->setDemandes(null);
+            if ($operation->getDemande() === $this) {
+                $operation->setDemande(null);
             }
         }
 

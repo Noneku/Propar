@@ -22,13 +22,16 @@ class GestionController extends AbstractController
             'employes' => $employeRepository->findAll(),
         ]);
     }
+    
 
     #[Route('/new', name: 'app_gestion_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,UserPasswordHasherInterface $passwordHasher): Response
     {
+        
         $employe = new Employe();
         $form = $this->createForm(EmployeType::class, $employe);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword=$form->get('plainPassword')->getData();

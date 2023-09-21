@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DemandeController!{% endblock %}
+{% block title %}Hello DemandeController!aa{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,30 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ controller_name}}!✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/Propar/src/Controller/DemandeController.php'|file_link(0) }}">src/Controller/DemandeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/Propar/templates/demande/index.html.twig'|file_link(0) }}">templates/demande/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1>Votre Formulaire</h1>
+
+    {# {{ form_start(form) }}
+    
+    <div class="form-group">
+        {{ form_label(form.date_demande) }}
+        {{ form_widget(form.date_demande, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.prestation) }}
+        {{ form_widget(form.prestation, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.client) }}
+        {{ form_widget(form.client, { 'attr': {'class': 'form-control'} }) }}
+    </div> #}
+
+    {# Ajoutez d'autres champs ici si nécessaire #}
+
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+    
+    {# {{ form_end(form) }} #}
 {% endblock %}

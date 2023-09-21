@@ -22,19 +22,21 @@ class Demande
     #[ORM\OneToOne(inversedBy: 'demande', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Prestation $prestation = null;
-    
 
-    #[ORM\OneToOne(inversedBy: 'Demande', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'demande', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'Demande', targetEntity: Operation::class)]
+
+    #[ORM\OneToMany(mappedBy: 'demande', targetEntity: Operation::class, orphanRemoval: true)]
     private Collection $operation;
 
     public function __construct()
     {
         $this->operation = new ArrayCollection();
     }
+
+    
 
     public function getId(): ?int
     {

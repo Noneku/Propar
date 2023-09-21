@@ -18,11 +18,13 @@ class Operation
 
     #[ORM\ManyToOne(inversedBy: 'operation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Demande $Demande = null;
+    private ?Demande $demande = null;
 
-    #[ORM\OneToOne(inversedBy: 'Operation', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(inversedBy: 'operation', cascade: ['persist', 'remove'])]
     private ?Employe $employe = null;
+
+
+
 
     public function getId(): ?int
     {
@@ -43,12 +45,12 @@ class Operation
 
     public function getDemande(): ?Demande
     {
-        return $this->Demande;
+        return $this->demande;
     }
 
-    public function setDemande(?Demande $Demande): static
+    public function setDemande(?Demande $demande): static
     {
-        $this->Demande = $Demande;
+        $this->demande = $demande;
 
         return $this;
     }

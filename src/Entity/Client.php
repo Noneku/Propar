@@ -41,6 +41,9 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
 
+    #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
+    private ?Demande $demande = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +158,23 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAdresse(string $adresse): static
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getDemande(): ?Demande
+    {
+        return $this->demande;
+    }
+
+    public function setDemande(Demande $demande): static
+    {
+        // set the owning side of the relation if necessary
+        if ($demande->getClient() !== $this) {
+            $demande->setClient($this);
+        }
+
+        $this->demande = $demande;
 
         return $this;
     }

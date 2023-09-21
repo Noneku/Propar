@@ -20,7 +20,8 @@ class Prestation
     private ?string $description = null;
 
     #[ORM\OneToOne(mappedBy: 'prestation', cascade: ['persist', 'remove'])]
-    private ?Demande $Demande = null;
+    private ?Demande $demande = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -56,17 +57,17 @@ class Prestation
 
     public function getDemande(): ?Demande
     {
-        return $this->Demande;
+        return $this->demande;
     }
 
-    public function setDemande(Demande $Demande): static
+    public function setDemande(Demande $demande): static
     {
         // set the owning side of the relation if necessary
-        if ($Demande->getPrestation() !== $this) {
-            $Demande->setPrestation($this);
+        if ($demande->getPrestation() !== $this) {
+            $demande->setPrestation($this);
         }
 
-        $this->Demande = $Demande;
+        $this->demande = $demande;
 
         return $this;
     }

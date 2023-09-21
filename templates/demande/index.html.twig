@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DemandeController!aa{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name}}!✅</h1>
+
+    <h1>Votre Formulaire</h1>
+
+    {# {{ form_start(form) }}
+    
+    <div class="form-group">
+        {{ form_label(form.date_demande) }}
+        {{ form_widget(form.date_demande, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.prestation) }}
+        {{ form_widget(form.prestation, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.client) }}
+        {{ form_widget(form.client, { 'attr': {'class': 'form-control'} }) }}
+    </div> #}
+
+    {# Ajoutez d'autres champs ici si nécessaire #}
+
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+    
+    {# {{ form_end(form) }} #}
+{% endblock %}

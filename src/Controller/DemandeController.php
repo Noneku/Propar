@@ -47,7 +47,7 @@ class DemandeController extends AbstractController
            $entityManager->flush();
 
            // Redirigez vers une autre page ou effectuez une autre action
-           return $this->redirectToRoute('/');
+           return $this->redirectToRoute('app_home');
        }
           
        return $this->render('demande/index.html.twig', [

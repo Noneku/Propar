@@ -24,9 +24,16 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        # main:
-        #     lazy: true
-        #     provider: client_provider
+        client_firewall:
+            provider: client_provider
+            custom_authenticator: App\Security\ClientAuthenticator
+            logout:
+                path: app_logout
+                # Configuration du logout
+                # ...
+        main:
+            lazy: true
+            provider: client_provider
             # Configuration du firewall principal
             # ...
 
@@ -35,13 +42,6 @@ security:
             # Configuration du firewall employé
             # ...
 
-        client_firewall:
-            provider: client_provider
-            custom_authenticator: App\Security\ClientAuthenticator
-            logout:
-                path: app_logout
-                # Configuration du logout
-                # ...
 
             remember_me:
                 secret: '%kernel.secret%'

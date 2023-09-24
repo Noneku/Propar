@@ -16,24 +16,30 @@ class AppDataBase extends Fixture
     public function load(ObjectManager $manager): void
     {   
         $randomArrayRole = ["Admin", "Expert", "Senior", "Apprenti"];
+        $prestationsArray = [
+            "Grosse" => "Description",
+            "Moyenne" => "Description",
+            "Petite" => "Description"
+            ];
 
         $faker = Faker::create('fr_FR');
+        
+        //Create GapCount for avoid duplicates ID in database
+        $gapCount = 0;
 
-        $count = 0;
-
-        for ($i=0; $i < 3; $i++) {
+        foreach ($prestationsArray as $nomPrestation => $descriptionPrestation) {
             
             $prestation = new Prestation;
             
             $prestation->setPrix(rand(1000, 6000));
-            $prestation->setDescription("Voici la description de ma prestation");
-            $prestation->setNom("Grosse");
+            $prestation->setNom($nomPrestation);
+            $prestation->setDescription($descriptionPrestation);
             
             $manager->persist($prestation);
             
-            for ($g = $count; $g < 20; $g++) { 
+            for ($g = $gapCount; $g < 20; $g++) { 
                 
-                $count += $g;
+                $gapCount += $g;
 
                 $client = new Client();
                 $client->setNom($faker->firstName);
@@ -42,6 +48,7 @@ class AppDataBase extends Fixture
                 $client->setEmail($faker->email);
                 $client->setTel($faker->phoneNumber);
                 $client->setPassword($faker->password);
+                $client->setRoles(['ROLE_USER']);
                 
                 $manager->persist($client);
                 
@@ -51,6 +58,7 @@ class AppDataBase extends Fixture
                 $employe->setPrenom($faker->lastName);
                 $employe->setMatricule('matricule' . $g);
                 $employe->setPassword($faker->password);
+                $employe->setRoles($randomArrayRole[rand(0,3)]);
                 
                 $manager->persist($employe);
                 

@@ -22,6 +22,9 @@ class RegistrationClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setRoles(["ROLE_USER"]);
+            
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -29,6 +32,7 @@ class RegistrationClientController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
 
             $entityManager->persist($user);
             $entityManager->flush();

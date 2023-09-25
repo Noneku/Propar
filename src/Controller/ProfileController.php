@@ -1,7 +1,9 @@
 <?php
 
-// src/Controller/ProfileController.php
+namespace App\Controller;
+
 use App\Entity\Client;
+use App\Form\ClientType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,11 +33,11 @@ public function edit(Client $client, Request $request, EntityManagerInterface $e
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-        // Mettez à jour les données du profil dans la base de données
+        // Met à jour les données du profil dans la base de données
 
         $entityManager->flush();
 
-        // Redirigez l'utilisateur vers la page de profil
+        // Redirige l'utilisateur vers la page de profil
         return $this->redirectToRoute('profile_show', ['id' => $client->getId()]);
     }
 

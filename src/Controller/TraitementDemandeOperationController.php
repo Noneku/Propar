@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Demande;
+use App\Entity\Employe;
 use App\Entity\Operation;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +17,13 @@ class TraitementDemandeOperationController extends AbstractController
     {
 
         $demande = $entitymanager->getRepository(Demande::class)->find($id);
+        $employe = $entitymanager->getRepository(Employe::class)->find(133);
 
         $operation = new Operation;
 
         $operation->setDemande($demande);
         //Replace User by entity type employee
-        $operation->setEmploye($this->getUser());
+        $operation->setEmploye($employe);
         $operation->setStatus(true);
 
         $entitymanager->persist($operation);

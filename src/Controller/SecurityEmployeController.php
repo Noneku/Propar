@@ -13,7 +13,7 @@ class SecurityEmployeController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('/getion');
+            return $this->redirectToRoute('/gestion');
         }
 
         // get the login error if there is one

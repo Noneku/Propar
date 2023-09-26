@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/gestion')]
-class GestionController extends AbstractController
+class GestionEmployeController extends AbstractController
 {
     #[Route('/', name: 'app_gestion_index', methods: ['GET'])]
     public function index(EmployeRepository $employeRepository): Response
@@ -24,7 +24,7 @@ class GestionController extends AbstractController
     }
     
 
-    #[Route('/new', name: 'app_gestion_new', methods: ['GET', 'POST'])]
+    #[Route('/registration_employe', name: 'app_gestion_registration_employe', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,UserPasswordHasherInterface $passwordHasher): Response
     {
         
@@ -47,7 +47,7 @@ class GestionController extends AbstractController
             return $this->redirectToRoute('app_gestion_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('gestion/new.html.twig', [
+        return $this->render('gestion/registrationEmploye.html.twig', [
             'employe' => $employe,
             'form' => $form,
         ]);

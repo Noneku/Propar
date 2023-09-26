@@ -13,7 +13,7 @@ class SecurityEmployeController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('/gestion');
+            return $this->redirectToRoute('app_home');
         }
 
         // get the login error if there is one
@@ -21,7 +21,6 @@ class SecurityEmployeController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        var_dump($error, $lastUsername);
 
         return $this->render('security/login_employe.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }

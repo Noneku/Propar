@@ -23,10 +23,9 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-    {{ dump(error, last_username) }}
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in
     </button>
-     {{ dump(error, last_username) }}
+
 </form>
 {% endblock %}

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ProfileController extends AbstractController
+class ProfileClientController extends AbstractController
 {
  
     #[Route(path: '/profile/{id}', name: 'profile_show')]

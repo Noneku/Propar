@@ -16,8 +16,8 @@ class DemandeType extends AbstractType
             ->add('prestation', EntityType::class, [
                 'class' => 'App\Entity\Prestation', 
                 'choice_label' => 'nom', 
-            ])
-        ;
+                'label' => 'Choisissez une prestation',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,0 +1,28 @@
+{# templates/profile/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1>Profile</h1>
+
+    <dl>
+        <dt>Email:</dt>
+        <dd>{{ client.email }}</dd>
+
+        <dt>Nom:</dt>
+        <dd>{{ client.nom }}</dd>
+
+        <dt>Prénom:</dt>
+        <dd>{{ client.prenom }}</dd>
+
+        <dt>Téléphone:</dt>
+        <dd>{{ client.tel }}</dd>
+
+        <dt>Adresse:</dt>
+        <dd>{{ client.adresse }}</dd>
+    </dl>
+
+    <a href="{{ path('profile_edit', { 'id': client.id }) }}" class="btn btn-primary">Modifier le profil</a>
+{% endblock %}

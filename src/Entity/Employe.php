@@ -33,6 +33,10 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[ORM\OneToOne(mappedBy: 'employe', cascade: ['persist', 'remove'])]
+    private ?Operation $operation = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,9 +76,9 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): static
+    public function setRoles(string $roles): static
     {
-        $this->roles = $roles;
+        $this->roles[] = $roles;
 
         return $this;
     }
@@ -123,6 +127,23 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getOperation(): ?Operation
+    {
+        return $this->operation;
+    }
+
+    public function setOperation(Operation $operation): static
+    {
+        // set the owning side of the relation if necessary
+        if ($operation->getEmploye() !== $this) {
+            $operation->setEmploye($this);
+        }
+
+        $this->operation = $operation;
 
         return $this;
     }

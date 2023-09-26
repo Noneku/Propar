@@ -1,23 +1,55 @@
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    # Configuration des hachages de mot de passe
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+
+    # Configuration des fournisseurs de données (providers)
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        employe_provider:
             entity:
                 class: App\Entity\Employe
                 property: matricule
-        # used to reload user from session & other features (e.g. switch_user)
-        # used to reload user from session & other features (e.g. switch_user)
+
+        client_provider:
+            entity:
+                class: App\Entity\Client
+                property: email
+
+    # Configuration globale de la sécurité
+    # ...
+
+    # Configuration des pare-feux (firewalls)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        client_firewall:
+            provider: client_provider
+            custom_authenticator: App\Security\ClientAuthenticator
+            logout:
+                path: app_logout
+                # Configuration du logout
+                # ...
         main:
             lazy: true
-            provider: app_user_provider
+            provider: client_provider
+            # Configuration du firewall principal
+            # ...
+
+        # employe_firewall:
+        #     provider: employe_provider
+            # Configuration du firewall employé
+            # ...
+
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
+
+            # Configuration de la fonctionnalité "remember_me"
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -25,19 +57,16 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+    # Configuration de l'accès aux ressources
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
+    # Configuration spécifique pour les tests
     security:
         password_hashers:
-            # By default, password hashers are resource intensive and take time. This is
-            # important to generate secure password hashes. In tests however, secure hashes
-            # are not important, waste resources and increase test times. The following
-            # reduces the work factor to the lowest possible values.
+            # Configuration des hachages de mot de passe pour les tests
             Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
                 algorithm: auto
                 cost: 4 # Lowest possible value for bcrypt

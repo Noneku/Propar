@@ -19,6 +19,7 @@ security:
     # ...
 
     # Configuration des pare-feux (firewalls)
+    
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -70,7 +71,7 @@ security:
 
     access_control:
         # - { path: ^/login_client, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-
+    
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

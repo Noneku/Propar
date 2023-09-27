@@ -25,7 +25,7 @@ class EmployeType extends AbstractType
                 ],
                 'placeholder' => 'Sélectionnez une option', // Optionnel : affichez un libellé par défaut
                 'label' => 'Roles', // Optionnel : spécifiez l'étiquette du champ
-                'multiple' => true
+                'multiple' => false
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

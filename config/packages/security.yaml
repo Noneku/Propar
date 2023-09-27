@@ -61,8 +61,13 @@ security:
 
     # Configuration de l'accès aux ressources
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/gestion, roles: ROLE_EXPERT }
+        - { path: ^/(demande|traitement), roles: ROLE_SENIOR }
+        - { path: ^/(demande|traitement), roles: ROLE_APPRENTI }
+    role_hierarchy:
+        ROLE_APPRENTI: ROLE_SENIOR
+        ROLE_EXPERT: ROLE_SENIOR
+       
 
 when@test:
     # Configuration spécifique pour les tests

@@ -24,36 +24,59 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        # main:
-        #     lazy: true
-        #     provider: app_user_provider
-        #     custom_authenticator: App\Security\EmployeAuthenticator
-        #     logout:
-        #         path: app_logout
-        #         where to redirect after logout
-        #         target: app_any_route
-        employe_firewall:
-            provider: employe_provider
-            custom_authenticator: App\Security\EmployeAuthenticator
-
-        client_firewall:
-            provider: client_provider
-            custom_authenticator: App\Security\ClientAuthenticator
+        main:
+            custom_authenticator: 
+                - App\Security\ClientAuthenticator
+                - App\Security\EmployeAuthenticator
+            entry_point: App\Security\ClientAuthenticator
             logout:
                 path: app_logout
-                # Configuration du logout
-                # ...
+
+        client_login:
+            pattern: ^/login_client
+            provider: client_provider
+            custom_authenticator: App\Security\ClientAuthenticator
+            form_login:
+                username_parameter: email
+                password_parameter: password
+                login_path: app_login_client
+                check_path: app_login_client
+                enable_csrf: true
+            logout:
+                path: app_logout
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+            entry_point: App\Security\ClientAuthenticator
+
+        employe_login:
+            pattern: ^/login_employe
+            provider: employe_provider
+            custom_authenticator: App\Security\EmployeAuthenticator
+            form_login:
+                username_parameter: matricule
+                password_parameter: password
+                login_path: app_login_employe
+                check_path: app_login_employe
+                enable_csrf: true
+            logout:
+                path: app_logout
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+            entry_point: App\Security\EmployeAuthenticator
+
+    access_control:
+        # - { path: ^/login_client, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
-
-    # Configuration de l'accès aux ressources
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
     # Configuration spécifique pour les tests

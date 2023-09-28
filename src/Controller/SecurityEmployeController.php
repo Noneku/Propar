@@ -7,9 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class SecurityClientController extends AbstractController
+class SecurityEmployeController extends AbstractController
 {
-    #[Route(path: '/login_client', name: 'app_login_client')]
+    #[Route(path: '/login_employe', name: 'app_login_employe')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
@@ -21,7 +21,8 @@ class SecurityClientController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/loginClient.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+
+        return $this->render('security/login_employe.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

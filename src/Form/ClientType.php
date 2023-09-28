@@ -2,28 +2,31 @@
 
 namespace App\Form;
 
-use App\Entity\Demande;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DemandeType extends AbstractType
+class ClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('prestation', EntityType::class, [
-                'class' => 'App\Entity\Prestation', 
-                'choice_label' => 'nom', 
-                'label' => 'Choisissez une prestation',
-            ]);
+            ->add('email')
+            // ->add('roles')
+            ->add('password')
+            ->add('tel')
+            ->add('nom')
+            ->add('prenom')
+            ->add('adresse')
+            // ->add('demande')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Demande::class,
+            'data_class' => Client::class,
         ]);
     }
 }

@@ -1,20 +1,241 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeClientController!{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {{ parent() }}
+    <!-- Feature Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-item position-relative bg-danger text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white mb-0">100% Natural</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-item position-relative bg-danger text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white mb-0">Made in France</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-item position-relative bg-danger text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fa fa-times fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white mb-0">Hypoallergenic</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- Feature Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Ecologique et</span> Français</h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+            </div>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="row g-5">
+                        <div class="col-12 d-flex">
+                            <div class="btn-square rounded-circle border flex-shrink-0"
+                                style="width: 80px; height: 80px;">
+                                <i class="fa fa-check fa-2x text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h5>Natural & Organic</h5>
+                                <hr class="w-25 bg-danger my-2">
+                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex">
+                            <div class="btn-square rounded-circle border flex-shrink-0"
+                                style="width: 80px; height: 80px;">
+                                <i class="fa fa-check fa-2x text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h5>Touche Ecolo</h5>
+                                <hr class="w-25 bg-danger my-2">
+                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex">
+                            <div class="btn-square rounded-circle border flex-shrink-0"
+                                style="width: 80px; height: 80px;">
+                                <i class="fa fa-check fa-2x text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h5>Anti-Bactériens</h5>
+                                <hr class="w-25 bg-danger my-2">
+                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                <!-- IMAGE ECOLOGIE -->
+                    <img class="img-fluid animated pulse infinite" src="img/ecologique.jpg">
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="row g-5">
+                        <div class="col-12 d-flex">
+                            <div class="btn-square rounded-circle border flex-shrink-0"
+                                style="width: 80px; height: 80px;">
+                                <i class="fa fa-check fa-2x text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h5>Risque Zéro</h5>
+                                <hr class="w-25 bg-danger my-2">
+                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex">
+                            <div class="btn-square rounded-circle border flex-shrink-0"
+                                style="width: 80px; height: 80px;">
+                                <i class="fa fa-check fa-2x text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h5>Pas d'irritation sur la peau</h5>
+                                <hr class="w-25 bg-danger my-2">
+                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex">
+                            <div class="btn-square rounded-circle border flex-shrink-0"
+                                style="width: 80px; height: 80px;">
+                                <i class="fa fa-check fa-2x text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h5>Aucun Produit Artificiel</h5>
+                                <hr class="w-25 bg-danger my-2">
+                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/Propar/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/Propar/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!-- How To Use Start -->
+    <div class="container-fluid how-to-use bg-danger my-5 py-5">
+        <div class="container text-white py-5">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-white mb-3"><span class="fw-light text-dark">Comment travailles nos</span> Travailleurs d'Elites
+                    <span class="fw-light text-dark"> chez Propar toi</span></h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.1s">
+                    <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
+                        <i class="fa fa-home fa-3x text-dark"></i>
+                    </div>
+                    <h5 class="text-white">Mélange le à l'eau</h5>
+                    <hr class="w-25 bg-light my-2 mx-auto">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</span>
+                </div>
+                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.3s">
+                    <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
+                        <i class="fa fa-home fa-3x text-dark"></i>
+                    </div>
+                    <h5 class="text-white">Mélange les produit</h5>
+                    <hr class="w-25 bg-light my-2 mx-auto">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</span>
+                </div>
+                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.5s">
+                    <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
+                        <i class="fa fa-home fa-3x text-dark"></i>
+                    </div>
+                    <h5 class="text-white">Attend 5 min et LET'S GO</h5>
+                    <hr class="w-25 bg-light my-2 mx-auto">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How To Use End -->
+
+    <!-- Product Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Our Natural</span> Prestation</h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-4 mx-auto wow fadeIn" data-wow-delay="0.1s">
+                    <div class="product-item text-center border h-100 p-4">
+                    <!-- IMAGE PETITE PRESTATION -->
+                        <img class="img-fluid mb-4" src="img\Petite presta.png" alt="">
+                        <div class="mb-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small>(99)</small>
+                        </div>
+                        <a href="" class="h6 d-inline-block mb-2">Petite Prestation</a>
+                        <a href="" class="h6 d-inline-block mb-4">Optez pour la Petite Prestation de Propar, la garantie d'un nettoyage efficace et méticuleux qui transformera votre espace en un lieu impeccable. Confiez-nous votre lieu, et laissez-nous prendre en charge chaque détail pour vous.</a>
+                        <h5 class="text-primary mb-3">$1000</h5>
+                        <a href="petite/prestation" class="btn btn-outline-primary px-3">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mx-auto wow fadeIn" data-wow-delay="0.3s">
+                    <div class="product-item text-center border h-100 p-4">
+                    <!-- IMAGE MOYENNE PRESTATION -->
+                        <img class="img-fluid mb-4" src="img\Moyenne presta.png" alt="">
+                        <div class="mb-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small>(99)</small>
+                        </div>
+                        <a href="" class="h6 d-inline-block mb-2">Moyenne Prestation</a>
+                        <a href="" class="h6 d-inline-block mb-4">Propar, l'entreprise de nettoyage de choix, vous propose notre Moyenne Prestation, une solution complète pour transformer votre espace en un environnement impeccable et accueillant. Confiez-nous votre lieu, et laissez-nous faire briller chaque recoin pour vous.</a>
+                        <h5 class="text-primary mb-3">$2500</h5>
+                        <a href="moyenne/prestation" class="btn btn-outline-primary px-3">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mx-auto wow fadeIn" data-wow-delay="0.5s">
+                    <div class="product-item text-center border h-100 p-4">
+                    <!-- IMAGE GRANDE PRESTATION -->
+                        <img class="img-fluid mb-4" src="img\Grosse presta.png" alt="">
+                        <div class="mb-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small>(99)</small>
+                        </div>
+                        <a href="" class="h6 d-inline-block mb-2">Grosse Prestation</a>
+                        <a href="" class="h6 d-inline-block mb-4">Propar, l'entreprise de nettoyage de référence, vous offre une expérience de propreté inégalée avec notre Grosse Prestation. Confiez-nous votre espace et transformez-le en une oasis de propreté, d'ordre, de sophistication, de luxure et de classe.</a>
+                        <h5 class="text-primary mb-3">$10 000</h5>
+                        <a href="grosse/prestation" class="btn btn-outline-primary px-3">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product End -->
 {% endblock %}
+
+

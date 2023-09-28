@@ -19,10 +19,10 @@ security:
     # ...
 
     # Configuration des pare-feux (firewalls)
-    # firewalls:
-    #     dev:
-    #         pattern: ^/(_(profiler|wdt)|css|images|js)/
-    #         security: false
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
 
         main:
             custom_authenticator: 
@@ -79,13 +79,13 @@ security:
             # switch_user: true
 
     # Configuration de l'accès aux ressources
-    access_control:
-        - { path: ^/gestion, roles: ROLE_EXPERT }
-        - { path: ^/(demande|traitement), roles: ROLE_SENIOR }
-        - { path: ^/(demande|traitement), roles: ROLE_APPRENTI }
-    role_hierarchy:
-        ROLE_APPRENTI: ROLE_SENIOR
-        ROLE_EXPERT: ROLE_SENIOR
+    # access_control:
+    #     - { path: ^/gestion, roles: ROLE_EXPERT }
+    #     - { path: ^/(demande|traitement), roles: ROLE_SENIOR }
+    #     - { path: ^/(demande|traitement), roles: ROLE_APPRENTI }
+    # role_hierarchy:
+    #     ROLE_APPRENTI: ROLE_SENIOR
+    #     ROLE_EXPERT: ROLE_SENIOR
        
 
 when@test:

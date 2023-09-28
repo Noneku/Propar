@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 
 use App\Entity\Client;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClientSelectionController extends AbstractController
 
 {
-    #[Route('/select-client', name: 'select_client')]
+    #[Route('/select_client', name: 'app_select_client')]
     public function selectClient(Request $request): Response
     {
         $form = $this->createForm(ClientSelectionType::class);
@@ -27,7 +29,7 @@ class ClientSelectionController extends AbstractController
             return $this->redirectToRoute('app_pdf_generator', ['clientNom' => $clientNom]);
         }
 
-        return $this->render('client_selection.html.twig', [
+        return $this->render('client_selection/client_selection.html.twig', [
             'form' => $form->createView(),
         ]);
     }

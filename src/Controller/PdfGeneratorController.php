@@ -12,7 +12,6 @@
  
  class PdfGeneratorController extends AbstractController
  {
-        
      private $entityManager;
  
      public function __construct(EntityManagerInterface $entityManager)
@@ -20,16 +19,18 @@
          $this->entityManager = $entityManager;
      }
  
-     #[Route('/pdf/generator', name: 'app_pdf_generator')]
+     #[Route('/pdf/generator/{clientNom}', name: 'app_pdf_generator')]
      public function index($clientNom): Response
      {
-        
-         $client = $this->entityManager->getRepository(Client::class)->find([$clientNom]);
-
+        // Débogage
+        // dump($clientNom);
+         // Utilisez $clientNom pour récupérer le client correspondant depuis la base de données
+         $client = $this->entityManager->getRepository(Client::class)->findOneBy(['nom' => $clientNom]);
+        // Débogage
+        // dump($client);
          if (!$client) {
-            throw $this->createNotFoundException('Client non trouvé');
-        }
-
+             throw $this->createNotFoundException('Client_non_trouve');
+         }
  
          $data = [
              'nom'     => $client->getNom(),
@@ -56,6 +57,5 @@
              ['Content-Type' => 'application/pdf']
          );
      }
-     
  }
  

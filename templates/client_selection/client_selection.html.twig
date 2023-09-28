@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélection de Client{% endblock %}
+
+{% block body %}
+    <h1>Sélectionnez un client</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.nom) }}
+    {{ form_end(form) }}
+
+<a href="{{ path('app_pdf_generator', {'clientNom': form.nom.vars.value}) }}">Générer PDF</a>
+{% endblock %}

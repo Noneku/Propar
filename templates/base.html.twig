@@ -62,8 +62,9 @@
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
 								<div class="dropdown-menu bg-light mt-2">
-									<a href="feature.html" class="dropdown-item">On</a>
-									<a href="how-to-use.html" class="dropdown-item">Verra</a>
+                                {# Probléme à régler avec ces deux lignes #}
+									{# <a href="{{ path('app_profile_show') }}" class="dropdown-item">Consulter son profil</a>
+									<a href="{{ path('app_profile_edit') }}" class="dropdown-item">Modifier son profile</a> #}
 									<a href="testimonial.html" class="dropdown-item">Bien</a>
 									<a href="blog.html" class="dropdown-item">Quoi</a>
 									<a href="404.html" class="dropdown-item">Mettre</a>
@@ -80,6 +81,14 @@
 				<!-- Header End -->
 		</header>
 			{% endblock %}
+            {% block headerEmploye %}
+            {% endblock %}
+
+
+
+
+
+
 			{% block body %}
 			<body>
 				<!-- Spinner Start -->
@@ -159,7 +168,7 @@
 					</div>
 					<div class="col-md-6 text-center text-md-end">
 						<div class="footer-menu">
-							<a href="">Home</a>
+							<a href="{{ path('app_home') }}">Home</a>
 							<a href="">Cookies</a>
 							<a href="">Help</a>
 							<a href="">FAQs</a>
@@ -173,7 +182,7 @@
 
 
 	<!-- Back to Top -->
-	<a href="home/client" class="btn btn-lg btn-primary btn-lg-square back-to-top bg-danger">
+	<a href="{{ path('app_home') }}" class="btn btn-lg btn-primary btn-lg-square back-to-top bg-danger">
 		<i class="bi bi-arrow-up"></i>
 	</a>
 

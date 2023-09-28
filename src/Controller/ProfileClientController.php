@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileClientController extends AbstractController
 {
  
-    #[Route(path: '/profile/{id}', name: 'profile_show')]
+    #[Route(path: '/profile/{id}', name: 'app_profile_show')]
    
     public function show(Client $client): Response
     {
@@ -23,7 +23,7 @@ class ProfileClientController extends AbstractController
     }
 
     
-    #[Route(path: '/profile/edit/{id}', name: 'profile_edit')]
+    #[Route(path: '/profile/edit/{id}', name: 'app_profile_edit')]
      
 
 public function edit(Client $client, Request $request, EntityManagerInterface $entityManager): Response
@@ -38,7 +38,7 @@ public function edit(Client $client, Request $request, EntityManagerInterface $e
         $entityManager->flush();
 
         // Redirige l'utilisateur vers la page de profil
-        return $this->redirectToRoute('profile_show', ['id' => $client->getId()]);
+        return $this->redirectToRoute('app_profile_show', ['id' => $client->getId()]);
     }
 
     return $this->render('profile/edit.html.twig', [

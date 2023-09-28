@@ -2,63 +2,12 @@
 
 {% block title %}Hello PolitiqueConfidentialiteController!{% endblock %}
 
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-
-<body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-danger position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-
-   <!-- Header Start -->
-<div class="container-fluid sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light p-0">
-        <!-- Aligner les éléments à gauche -->
-        <div class="navbar-nav" style="margin-left: 50px;"> <!-- Ajoutez une marge à droite -->
-            <a href="home/client" class="nav-item nav-link active">Accueil</a>
-            <a href="about.html" class="nav-item nav-link">Demande de Prestation</a>
-            <a href="product.html" class="nav-item nav-link">Prestation</a>
-        </div>
-        
-        <!-- Logo au centre -->
-        <a href="home/client" class="navbar-brand mx-auto">
-            <img src="img\Logo.png" alt="propar" style="width: 80px; height: auto;">
-        </a>
-        
-        <!-- Aligner les éléments à droite -->
-        <div class="navbar-nav" style="margin-right: 50px;"> <!-- Ajoutez une marge à gauche -->
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
-                <div class="dropdown-menu bg-light mt-2">
-                    <a href="feature.html" class="dropdown-item">On</a>
-                    <a href="how-to-use.html" class="dropdown-item">Verra</a>
-                    <a href="testimonial.html" class="dropdown-item">Bien</a>
-                    <a href="blog.html" class="dropdown-item">Quoi</a>
-                    <a href="404.html" class="dropdown-item">Mettre</a>
-                </div>
-            </div>
-            <a href="contact" class="nav-item nav-link">Contact</a>
-            <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Inscription</a>
-            <span class="mx-2"></span> <!-- Ajoutez cette ligne pour créer un espace -->
-            <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Connexion</a>
-        </div>
-    </nav>
-</div>
-<!-- Header End -->
-
-
-
-
-
-
-
-
-    <!-- Hero Start -->
+    {{ parent() }}
     <div class="container-fluid bg-danger hero-header mb-5">
         <div class="container">
             <div class="row g-5 align-items-center text-center">

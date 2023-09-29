@@ -4,6 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\Client;
+use App\Entity\Demande;
+use App\Entity\Operation;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ClientSelectionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,22 +18,31 @@ class ClientSelectionController extends AbstractController
 {
     #[Route('/select_client', name: 'app_select_client')]
     public function selectClient(Request $request): Response
-    {
-        $form = $this->createForm(ClientSelectionType::class);
+{
+    $form = $this->createForm(ClientSelectionType::class);
 
-        $form->handleRequest($request);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $clientNom = $data['client'];
-            
-            // Redirigez vers l'action de génération de PDF en passant l'ID du client
-            return $this->redirectToRoute('app_pdf_generator', ['clientNom' => $clientNom]);
-        }
+    if ($form->isSubmitted() && $form->isValid()) {
+        $operation = $form->get('operation')->getData();
+        $client = $operation->getDemande()->getClient();
+        
+        // Vous pouvez maintenant accéder aux propriétés du client (nom, prénom, etc.)
+        $nom = $client->getNom();
+        $prenom = $client->getPrenom();
+        $adresse = $client->getAdresse();
+        $tel = $client->getTel();
+        $email = $client->getEmail();
 
-        return $this->render('client_selection/client_selection.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        // Redirigez vers l'action de génération de PDF en passant l'ID du client
+        return $this->redirectToRoute('app_pdf_generator', ['id' => $client->getId()]);
     }
+
+    return $this->render('client_selection/client_selection.html.twig', [
+        'form' => $form->createView(),
+    ]);
 }
+
+}
+
 

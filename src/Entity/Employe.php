@@ -19,7 +19,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $matricule = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ['ROLE_EMPLOYE'];
 
     /**
      * @var string The hashed password
@@ -71,7 +71,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = '';
+        $roles[] = 'ROLE_EMPLOYE';
 
         return array_unique($roles);
     }

@@ -9,18 +9,20 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Prestation</th>
+                    <th>Prestation choisie</th>
                     <th>Client</th>
-                    <th>Date</th>
+                    <th>Matricule - Employé</th>
+                    <th>Date - Opération</th>
                 </tr>
             </thead>
             <tbody>
                 {% for operation in operations %}
                     <tr>
                         <td>{{ operation.getId() }}</td>
-                        <td>{{ operation.getPrestation().getNom() }}</td>
-                        <td>{{ operation.getClient().getNom() }} {{ operation.getClient().getPrenom() }}</td>
-                        <td>{{ operation.getDateoperation()|date('Y-m-d H:i:s')  }}</td>
+                        <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
+                        <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
+                        <td>{{ operation.getEmploye().getMatricule() }}</td>
+                        <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
                     </tr>
                     
                  {% endfor %}

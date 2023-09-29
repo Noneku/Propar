@@ -17,7 +17,7 @@ class DemandeDashBoardController extends AbstractController
 
         $demandes = $entityManager->getRepository(Demande::class)->findAll();
 
-        return $this->render('demande_dash_board/index.html.twig', [
+        return $this->render('demande_dashboard/index.html.twig', [
             'controller_name' => 'DemandeDashBoardController',
             'demandes' => $demandes,
         ]);

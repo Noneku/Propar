@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DemandeDashBoardController extends AbstractController
 {
-    #[Route('/demande/dashboard', name: 'app_demande_dash_board')]
+    #[Route('/demande/dashboard', name: 'app_demande_dashboard')]
     public function index(EntityManagerInterface $entityManager): Response
     {
 

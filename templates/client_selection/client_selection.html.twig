@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélection de Client{% endblock %}
+
+{% block body %}
+    <h1>Sélectionnez une Operation</h1>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.operation, 'Operation') }}
+        {{ form_widget(form.operation, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.operation) }}
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
+    {{ form_end(form) }}
+
+    {# Affichez des messages flash ou d'autres informations ici #}
+{% endblock %}
+
+
+

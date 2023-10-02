@@ -19,7 +19,6 @@ security:
     # ...
 
     # Configuration des pare-feux (firewalls)
-    
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -71,13 +70,22 @@ security:
 
     access_control:
         # - { path: ^/login_client, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
+
+    # Configuration de l'accès aux ressources
+    # access_control:
+    #     - { path: ^/gestion, roles: ROLE_EXPERT }
+    #     - { path: ^/(demande|traitement), roles: ROLE_SENIOR }
+    #     - { path: ^/(demande|traitement), roles: ROLE_APPRENTI }
+    # role_hierarchy:
+    #     ROLE_APPRENTI: ROLE_SENIOR
+    #     ROLE_EXPERT: ROLE_SENIOR
+       
 
 when@test:
     # Configuration spécifique pour les tests

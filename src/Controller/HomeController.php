@@ -12,9 +12,12 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         //Check the authentication and roles of User
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        //If granted User is Stored in $client
-        $client = $this->getUser();
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $client = $this->getUser();
+        } else {
+            // Si l'utilisateur n'est pas authentifié, $client est null ou non défini
+            $client = null;
+        }
         
 
         return $this->render('home/index.html.twig', [

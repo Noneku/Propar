@@ -70,7 +70,7 @@ security:
             entry_point: App\Security\EmployeAuthenticator
 
     access_control:
-        - { path: '^/profile', roles: ROLE_USER }
+        # - { path: '^/profile', roles: ROLE_USER }
     
 
             # activate different ways to authenticate

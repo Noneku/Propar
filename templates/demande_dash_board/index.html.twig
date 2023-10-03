@@ -21,9 +21,12 @@
                         <td>{{ demande.getPrestation().getNom() }}</td>
                         <td>{{ demande.getClient().getNom() }} {{ demande.getClient().getPrenom() }}</td>
                         <td>{{ demande.getDateDemande()|date('Y-m-d H:i:s')  }}</td>
-                        <td><button class="btn btn-primary">Accepter</button></td>
-                    </tr>
-                    
+                        <td>
+                            <form method="post" action="{{ path('/operation') }}">
+                                <button type="submit">Accepter</button>
+                            </form>
+                        </td>
+                    </tr>                   
                  {% endfor %}
             </tbody>
         </table>

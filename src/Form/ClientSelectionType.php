@@ -21,7 +21,7 @@ class ClientSelectionType extends AbstractType
             ->add('operation', EntityType::class, [
                 'class' => Operation::class, //  entité Operation
                 'choice_label' => function ($operation) {
-                    // Personnalisez l'affichage de l'opération dans la liste déroulante
+                    // Personnalise l'affichage de l'opération dans la liste déroulante
                     return $operation->getId(); // la propriété d'opération 
                 },
                 'placeholder' => 'Sélectionnez une opération', // Texte par défaut dans la liste déroulante
@@ -30,5 +30,5 @@ class ClientSelectionType extends AbstractType
             ]);
     }
 
-    // ...
+    
 }

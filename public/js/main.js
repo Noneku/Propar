@@ -1,4 +1,4 @@
-(function ($) {
+y(function ($) {
     "use strict";
 
     // Spinner

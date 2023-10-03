@@ -27,7 +27,7 @@ class ClientSelectionController extends AbstractController
         $operation = $form->get('operation')->getData();
         $client = $operation->getDemande()->getClient();
         
-        // Vous pouvez maintenant accéder aux propriétés du client (nom, prénom, etc.)
+        //accés aux propriétés du client (nom, prénom, etc.)
         $nom = $client->getNom();
         $prenom = $client->getPrenom();
         $adresse = $client->getAdresse();

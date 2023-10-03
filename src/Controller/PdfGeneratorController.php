@@ -15,7 +15,7 @@
    
      public function generatePdf(Client $client): Response
 {
-    // Utilisez les données du client pour générer le contenu du PDF
+    // Utilise les données du client pour générer le contenu du PDF
     $pdfContent = $this->renderView('pdf_generator/index.html.twig', [
         'client' => $client,
     ]);

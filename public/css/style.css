@@ -1,0 +1,421 @@
+/* Réglages du spinner */
+#spinner {
+    opacity: 0; /* Rend le spinner invisible */
+    visibility: hidden; /* Masque le spinner */
+    transition: opacity .5s ease-out, visibility 0s linear .5s; /* Ajoute une transition en douceur pour l'opacité et la visibilité */
+    z-index: 99999; /* Définit la profondeur z pour la superposition */
+}
+
+/* Affichage du spinner */
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s; /* Réactive le spinner avec une transition fluide */
+    visibility: visible; /* Rend le spinner visible */
+    opacity: 1; /* Définit l'opacité complète */
+}
+
+/* Bouton de retour en haut de page */
+.back-to-top {
+    position: fixed; /* Position fixe pour rester en haut de la page */
+    display: none; /* Masque le bouton par défaut */
+    right: 45px; /* Position depuis la droite */
+    bottom: 45px; /* Position depuis le bas */
+    z-index: 99; /* Profondeur z pour être au-dessus du contenu */
+}
+
+/* Animation de l'image avec classe "animated pulse" */
+img.animated.pulse {
+    animation-duration: 5s; /* Durée de l'animation de pulsation */
+}
+
+/* Styles de base pour les boutons */
+.btn {
+    font-weight: 500; /* Poids de la police */
+    transition: .5s; /* Transition de 0,5 seconde pour les changements de style */
+}
+
+/* Style spécifique pour les boutons primaires */
+.btn.btn-primary {
+    color: var(--bs-white); /* Couleur du texte pour les boutons primaires */
+}
+
+/* Styles pour les boutons carrés de différentes tailles */
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0; /* Aucun rembourrage interne */
+    display: flex; /* Affichage en tant que flexbox pour la mise en page centrée */
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: center; /* Centre horizontalement le contenu */
+    font-weight: normal; /* Réinitialise le poids de la police */
+    border-radius: 50px; /* Bordures arrondies pour un aspect de bouton circulaire */
+}
+
+/* Styles pour la barre de navigation */
+.navbar {
+    padding: 11px 0 !important; /* Espacement interne de la barre de navigation */
+    height: 85px; /* Hauteur de la barre de navigation */
+}
+
+
+/* Styles pour les liens de navigation */
+.navbar .navbar-nav .nav-link {
+    margin-right: 45px; /* Marge à droite pour les liens de navigation */
+    padding: 0; /* Aucun rembourrage interne */
+    color: var(--bs-dark); /* Couleur du texte par défaut */
+    font-weight: 500; /* Poids de la police */
+    transition: .5s; /* Transition de 0,5 seconde pour les changements de style */
+    outline: none; /* Supprime la bordure de mise au point */
+}
+
+/* Styles des liens de navigation au survol et au clic */
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--bs-white); /* Couleur du texte au survol ou au clic */
+}
+
+/* Styles pour l'icône de flèche dans les éléments de menu déroulant */
+.navbar .dropdown-toggle::after {
+    border: none; /* Supprime les bordures */
+    content: "\f107"; /* Ajoute une icône de flèche (FontAwesome requis) */
+    font-family: "Font Awesome 5 Free"; /* Utilise la police Font Awesome */
+    font-weight: 900; /* Poids de la police */
+    vertical-align: middle; /* Alignement vertical */
+    margin-left: 8px; /* Marge à gauche de l'icône */
+}
+
+/* Styles pour la barre de navigation en mode mobile */
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav {
+        padding: 0 15px; /* Espacement interne des éléments de menu */
+        background: transparent; /* Couleur de fond en mode mobile */
+    }
+
+    .navbar .navbar-nav .nav-link  {
+        margin-right: 0; /* Aucune marge à droite */
+        padding: 10px 0; /* Espacement interne des liens de navigation */
+    }
+}
+/* Styles pour la barre de navigation en mode bureau */
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block; /* Affiche le menu déroulant */
+        border: none; /* Supprime les bordures du menu déroulant */
+        margin-top: 0; /* Aucune marge en haut du menu déroulant */
+        top: 150%; /* Position par rapport à l'élément parent */
+        opacity: 0; /* Rend le menu déroulant invisible */
+        visibility: hidden; /* Masque le menu déroulant */
+        transition: .5s; /* Transition de 0,5 seconde pour les changements de style */
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%; /* Position du menu déroulant au survol */
+        visibility: visible; /* Rend le menu déroulant visible */
+        transition: .5s; /* Transition de 0,5 seconde pour les changements de style */
+        opacity: 1; /* Opacité complète du menu déroulant */
+    }
+}
+
+/* Styles pour l'en-tête du héros */
+.hero-header {
+    position: relative; /* Position relative pour le positionnement de l'en-tête */
+    margin-top: -85px; /* Marge négative pour chevaucher la barre de navigation */
+    padding-top: 12rem; /* Espacement interne en haut */
+    padding-bottom: 6rem; /* Espacement interne en bas */
+    background: url(../img/bg.png) center center no-repeat; /* Image de fond */
+    background-size: cover; /* Redimensionne l'image de fond pour couvrir */
+}
+
+.hero-header::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.hero-header .container {
+    position: relative; /* Position relative pour l'élément contenu */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+.hero-header .breadcrumb-item+.breadcrumb-item::before {
+    color: var(--bs-light); /* Couleur du texte avant le séparateur dans le fil d'Ariane */
+}
+
+/* Styles pour les éléments de fonctionnalité */
+.feature-item::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.feature-item .border {
+    position: relative; /* Position relative pour l'élément avec bordure */
+    border-color: rgba(255, 255, 255, .2) !important; /* Couleur de la bordure */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+/* Styles pour la section des offres */
+.deal {
+    position: relative; /* Position relative pour la section */
+    background: url(../img/bg.png) center center no-repeat; /* Image de fond */
+    background-size: cover; /* Redimensionne l'image de fond pour couvrir */
+}
+
+.deal::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.deal .bg-white {
+    position: relative; /* Position relative pour l'élément avec arrière-plan blanc */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+.deal .cdt span {
+    display: block; /* Affichage en bloc pour les éléments span */
+    font-size: 16px; /* Taille de police */
+    font-style: italic; /* Style de police italique */
+    font-weight: 200; /* Poids de la police */
+    text-transform: capitalize; /* Transformation du texte en majuscules */
+}
+/* Styles pour la section "Comment utiliser" */
+.how-to-use {
+    position: relative; /* Position relative pour la section */
+    background: url(../img/bg.png) center center no-repeat; /* Image de fond */
+    background-size: cover; /* Redimensionne l'image de fond pour couvrir */
+}
+
+.how-to-use::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.how-to-use .container {
+    position: relative; /* Position relative pour l'élément contenu */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+.how-to-use .border {
+    border-color: rgba(255, 255, 255, .2) !important; /* Couleur de la bordure */
+}
+
+/* Styles pour les éléments de produit */
+.product-item {
+    transition: .1s; /* Transition rapide de 0,1 seconde */
+}
+
+.product-item:hover {
+    border-width: 0 !important; /* Suppression de la bordure au survol */
+    box-shadow: 0 0 35px rgba(144, 188, 121, .25); /* Ombre portée au survol */
+}
+
+.product-item:hover a.btn {
+    color: var(--bs-white); /* Couleur du texte du bouton au survol */
+    background: var(bg-danger); /* Couleur de fond du bouton au survol */
+}
+
+/* Styles pour la section des témoignages */
+.testimonial {
+    position: relative; /* Position relative pour la section */
+    background: url(../img/bg.png) center center no-repeat; /* Image de fond */
+    background-size: cover; /* Redimensionne l'image de fond pour couvrir */
+}
+
+.testimonial::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.testimonial .testimonial-carousel {
+    position: relative; /* Position relative pour le carrousel de témoignages */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+.testimonial-carousel .owl-item img {
+    width: 120px; /* Largeur de l'image */
+    height: 120px; /* Hauteur de l'image */
+    border-color: rgba(255, 255, 255, .2) !important; /* Couleur de la bordure de l'image */
+    margin: 0 auto 20px auto; /* Marge autour de l'image */
+    border-radius: 100px; /* Rayon de bordure pour arrondir l'image */
+}
+
+.testimonial-carousel .owl-dots {
+    margin-top: 25px; /* Marge supérieure pour les indicateurs de pagination */
+    display: flex; /* Affichage en ligne des indicateurs */
+    align-items: center; /* Alignement vertical des indicateurs */
+    justify-content: center; /* Alignement horizontal des indicateurs */
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative; /* Position relative pour l'indicateur de pagination */
+    display: inline-block; /* Affichage en ligne de l'indicateur */
+    margin: 0 5px; /* Marge autour de l'indicateur */
+    width: 30px; /* Largeur de l'indicateur */
+    height: 30px; /* Hauteur de l'indicateur */
+    display: flex; /* Affichage en ligne de l'indicateur */
+    align-items: center; /* Alignement vertical de l'indicateur */
+    justify-content: center; /* Alignement horizontal de l'indicateur */
+    background: transparent; /* Fond transparent de l'indicateur */
+    border: 3px solid rgba(255, 255, 255, .2); /* Bordure de l'indicateur */
+    border-radius: 30px; /* Rayon de bordure pour arrondir l'indicateur */
+    transition: .5s; /* Transition de 0,5 seconde pour les changements de style */
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--bs-dark); /* Couleur de fond de l'indicateur actif */
+}
+
+/* Styles pour les éléments de blog */
+.blog-item {
+    transition: .1s; /* Transition rapide de 0,1 seconde */
+}
+
+.blog-item:hover {
+    border-width: 0 !important; /* Suppression de la bordure au survol */
+    box-shadow: 0 0 35px rgba(144, 188, 121, .25); /* Ombre portée au survol */
+}
+
+.blog-item:hover a.btn {
+    color: var(--bs-white); /* Couleur du texte du bouton au survol */
+    background: var(bg-danger); /* Couleur de fond du bouton au survol */
+}
+
+/* Styles pour les éléments d'informations de contact */
+.contact-info-item::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.contact-info-item .border {
+    position: relative; /* Position relative pour l'élément avec bordure */
+    border-color: rgba(255, 255, 255, .2) !important; /* Couleur de la bordure */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+/* Styles pour la section de la newsletter */
+.newsletter {
+    position: relative; /* Position relative pour la section */
+    background: url(../img/bg.png) center center no-repeat; /* Image de fond */
+    background-size: cover; /* Redimensionne l'image de fond pour couvrir */
+}
+
+.newsletter::before {
+    position: absolute; /* Position absolue pour le pseudo-élément */
+    content: ""; /* Contenu vide */
+    width: 100%; /* Largeur à 100% */
+    height: 100%; /* Hauteur à 100% */
+    top: 0; /* En haut de la zone parente */
+    left: 0; /* À gauche de la zone parente */
+    background: rgba(255, 255, 255, .1); /* Couleur de fond semi-transparente */
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%); /* Masque de forme polygonale */
+}
+
+.newsletter .container {
+    position: relative; /* Position relative pour l'élément contenu */
+    z-index: 1; /* Profondeur z pour être au-dessus du pseudo-élément */
+}
+
+.newsletter .form-control {
+    background: rgba(255, 255, 255, .3); /* Couleur de fond semi-transparente pour le champ de formulaire */
+}
+
+/* Styles pour le pied de page */
+.footer .btn.btn-link {
+    display: block; /* Affichage en bloc pour les boutons de lien */
+    margin-bottom: 10px; /* Marge inférieure */
+    padding: 0; /* Aucun espacement interne */
+    text-align: left; /* Alignement du texte à gauche */
+    color: var(--bs-body); /* Couleur du texte */
+    font-weight: normal; /* Poids de la police normal */
+    transition: .3s; /* Transition de 0,3 seconde pour les changements de style */
+}
+
+.footer .btn.btn-link:hover {
+    color: var(bg-danger); /* Couleur du texte au survol */
+}
+
+.footer .btn.btn-link::before {
+    position: relative; /* Position relative pour l'icône avant le texte */
+    content: "\f105"; /* Contenu de l'icône (Flèche vers la droite) */
+    font-family: "Font Awesome 5 Free"; /* Famille de police pour l'icône */
+    font-weight: 900; /* Poids de la police */
+    margin-right: 10px; /* Marge à droite de l'icône */
+}
+
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px; /* Espacement des lettres au survol */
+    box-shadow: none; /* Suppression de l'ombre portée au survol */
+}
+
+.footer .copyright {
+    padding: 25px 0; /* Espacement interne en haut et en bas */
+    border-top: 3px solid var(--bs-light); /* Bordure supérieure */
+}
+
+.footer .copyright a {
+    color: var(--bs-body); /* Couleur du texte du lien */
+}
+
+.footer .copyright a:hover {
+    color: var(bg-danger); /* Couleur du texte du lien au survol */
+}
+
+.footer .footer-menu a {
+    margin-right: 15px; /* Marge à droite entre les éléments du menu */
+    padding-right: 15px; /* Espacement interne à droite */
+    border-right: 3px solid var(--bs-light); /* Bordure à droite des éléments du menu */
+}
+
+.footer .footer-menu a:last-child {
+    margin-right: 0; /* Aucune marge à droite pour le dernier élément du menu */
+    padding-right: 0; /* Aucun espacement interne à droite pour le dernier élément du menu */
+    border-right: none; /* Suppression de la bordure à droite pour le dernier élément du menu */
+}

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EmployeRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -19,7 +20,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $matricule = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ['ROLE_EMPLOYE'];
 
     /**
      * @var string The hashed password
@@ -71,7 +72,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_EMPLOYE';
 
         return array_unique($roles);
     }
@@ -146,5 +147,5 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
         $this->operation = $operation;
 
         return $this;
-    }
+    }   
 }

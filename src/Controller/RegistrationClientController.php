@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Client;
-use App\Form\RegistrationFormType;
+use App\Form\RegistrationClientFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ class RegistrationClientController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Client();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationClientFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -33,7 +33,6 @@ class RegistrationClientController extends AbstractController
                 )
             );
 
-
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
@@ -41,7 +40,7 @@ class RegistrationClientController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/registerClient.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

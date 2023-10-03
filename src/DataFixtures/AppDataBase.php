@@ -76,6 +76,7 @@ class AppDataBase extends Fixture
                 $operation->setDemande($demande);
                 $operation->setEmploye($employe);
                 $operation->setStatus(rand(0, 1));
+                $operation->setDateOperation($faker->dateTime);
     
                 $manager->persist($operation);
 

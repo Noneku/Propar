@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Demande;
 use App\Entity\Employe;
 use App\Entity\Operation;
@@ -15,21 +16,22 @@ class TraitementDemandeOperationController extends AbstractController
     #[Route('/traitement/demande/operation/{id}', name: 'app_open_operation')]
     public function openOperation(EntityManagerInterface $entitymanager,$id)
     {
-
+        //Catch ID of Demande by URL ID parameter
         $demande = $entitymanager->getRepository(Demande::class)->find($id);
-        $employe = $entitymanager->getRepository(Employe::class)->find(154);
 
         $operation = new Operation;
 
         $operation->setDemande($demande);
         //Replace User by entity type employee
-        $operation->setEmploye($employe);
+        $operation->setEmploye($this->getUser());
         $operation->setStatus(true);
+        $dateOperation  = new DateTime();
+        $operation->setDateOperation($dateOperation);
 
         $entitymanager->persist($operation);
         $entitymanager->flush();
 
-        $this->redirectToRoute('app_operation');
+        return $this->redirectToRoute('app_operation');
     }
     
 }

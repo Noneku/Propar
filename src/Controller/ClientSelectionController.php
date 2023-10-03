@@ -27,14 +27,14 @@ class ClientSelectionController extends AbstractController
         $operation = $form->get('operation')->getData();
         $client = $operation->getDemande()->getClient();
         
-        //accés aux propriétés du client (nom, prénom, etc.)
+        // accés aux propriétés du client (nom, prénom, etc.)
         $nom = $client->getNom();
         $prenom = $client->getPrenom();
         $adresse = $client->getAdresse();
         $tel = $client->getTel();
         $email = $client->getEmail();
 
-        // Redirigez vers l'action de génération de PDF en passant l'ID du client
+        // Redirige vers l'action de génération de PDF en passant l'ID du client
         return $this->redirectToRoute('app_pdf_generator', ['id' => $client->getId()]);
     }
 

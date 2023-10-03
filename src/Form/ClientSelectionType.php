@@ -19,7 +19,7 @@ class ClientSelectionType extends AbstractType
     {
         $builder
             ->add('operation', EntityType::class, [
-                'class' => Operation::class, //  entité Operation
+                'class' => Operation::class, //entité Operation
                 'choice_label' => function ($operation) {
                     // Personnalise l'affichage de l'opération dans la liste déroulante
                     return $operation->getId(); // la propriété d'opération 

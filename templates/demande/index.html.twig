@@ -1,26 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DemandeController!aa{% endblock %}
+{% block title %}Hello DemandeController!aa
+{% endblock %}
 
+{% block header %}
+	{{ parent() }}
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name}}!✅</h1>
+	{{ parent() }}
+	<div class="example-wrapper text-center">
+		<h1>Hello
+			{{ controller_name }}!✅</h1>
 
-    <h1>Votre Formulaire</h1>
+		<h1>Votre Formulaire</h1>
 
-    {{ form_start(form) }}
+		<div class="d-flex justify-content-center align-items-center">
+			<form class="form" method="POST">
+				{{ form_start(form) }}
 
-    <div class="form-group">
-        {{ form_label(form.prestation) }}
-        {{ form_widget(form.prestation, { 'attr': {'class': 'form-control'} }) }}
-    </div>
+				<div class="form-group">
+					{{ form_label(form.prestation) }}
+					{{ form_widget(form.prestation, { 'attr': {'class': 'form-control'} }) }}
+				</div>
 
-    <button type="submit" class="btn btn-primary">Soumettre</button>
-    
-     {{ form_end(form) }}
+				<button type="submit" class="btn btn-primary mt-4 mb-4">Soumettre</button>
+
+				{{ form_end(form) }}
+			</form>
+		</div>
+	</div>
+{% endblock %}
+{% block footer %}
+	{{ parent() }}
 {% endblock %}

@@ -22,7 +22,7 @@
                         <td>{{ demande.getClient().getNom() }} {{ demande.getClient().getPrenom() }}</td>
                         <td>{{ demande.getDateDemande()|date('Y-m-d H:i:s')  }}</td>
                         <td>
-                            <form method="post" action="{{ path('/operation') }}">
+                            <form method="post" action="{{ path('app_operation') }}">
                                 <button type="submit">Accepter</button>
                             </form>
                         </td>

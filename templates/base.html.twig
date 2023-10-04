@@ -37,7 +37,7 @@
                     <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="collapse navbar-collapse w-100" id="navbarCollapse">
                         <!-- Aligner les éléments à gauche -->
                         <a href="{{ path('app_home') }}" class="navbar-brand mx-auto">
                             <img src="img\Logo.png" alt="propar" style="width: 80px; height: auto;">
@@ -49,13 +49,12 @@
                             <a href="{{ path('app_prestations')}}" class="nav-item nav-link">Prestations</a>
                             <a href="contact" class="nav-item nav-link">Contact</a>
                         </div>
-						<div class="navbar-nav" style="margin-right: 50px;">
+						<div class="navbar-nav d-flex justify-content-center" style="margin-right: 50px;">
 							<!-- Ajoutez une marge à gauche -->
 							{% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_USER') %}
 								<div class="nav-item dropdown d-flex align-items-center">
 									<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
 									<div class="dropdown-menu bg-light mt-2">
-										{# Problème à régler avec ces deux lignes #}
 										<a href="{{ path('app_profile_show') }}" class="dropdown-item">Consulter son profil</a>
 										{# <a href="{{ path('app_profile_edit', { 'id': client.id }) }}" class="dropdown-item">Modifier son profil</a> #}
 										<a href="testimonial.html" class="dropdown-item">Bien</a>
@@ -65,7 +64,7 @@
 								</div>
 							{% elseif is_granted('ROLE_EMPLOYE') %}
 								<div class="nav-item dropdown d-flex align-items-center">
-									<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Consultation Technique</a>
+									<a href="#" class="nav-link dropdown-toggle text-nowrap" data-bs-toggle="dropdown">Consultation Technique</a>
 									<div class="dropdown-menu bg-light mt-2">
 										<a href="{{ path('app_demande_dashboard') }}" class="dropdown-item">Dashboard - Demandes</a>
 										<a href="{{ path('app_operation') }}" class="dropdown-item">Dashboard - Opérations</a>
@@ -75,19 +74,22 @@
 									</div>
 								</div>
 							{% endif %}
-							<span class="mx-2"></span>
 							<!-- Ajoutez cette ligne pour créer un espace -->
 							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 								<a href="{{ path('app_logout') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Déconnexion</a>
+								{% if is_granted('ROLE_USER') %}
+									<p>Bonjour, {{ app.user.getNom() ~ ' ' ~ app.user.getPrenom() }}</p>
+								{% elseif is_granted('ROLE_EMPLOYE') %}
+									<p>Bonjour, {{ app.user.getNom() ~ ' ' ~ app.user.getPrenom() }}</p></br>
+									<p>Rôle : {{ app.user.getRoles()[1] }}</p>
+								{% endif %}
 							{% else %}
 								<a href="{{ path('app_register') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Inscription</a>
 								<a href="{{ path('app_login_client') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Connexion</a>
 							{% endif %}
 						</div>
                     </div>
-
                     <!-- Logo au centre -->
-
                     <!-- Aligner les éléments à droite -->
                 </nav>
             </div>

@@ -34,6 +34,8 @@ class ClientSelectionController extends AbstractController
         $tel = $client->getTel();
         $email = $client->getEmail();
 
+        // Envoi de mail au client après
+
         // Redirigez vers l'action de génération de PDF en passant l'ID du client
         return $this->redirectToRoute('app_pdf_generator', ['id' => $client->getId()]);
     }

@@ -109,6 +109,10 @@ img.animated.pulse {
         margin-right: 0; /* Aucune marge à droite */
         padding: 10px 0; /* Espacement interne des liens de navigation */
     }
+
+    .navbar-collapse {
+        background-color: #dc3545;
+    }
 }
 /* Styles pour la barre de navigation en mode bureau */
 @media (min-width: 992px) {
@@ -419,3 +423,4 @@ img.animated.pulse {
     padding-right: 0; /* Aucun espacement interne à droite pour le dernier élément du menu */
     border-right: none; /* Suppression de la bordure à droite pour le dernier élément du menu */
 }
+

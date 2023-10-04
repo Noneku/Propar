@@ -41,7 +41,6 @@ class DemandeController extends AbstractController
         $entityPrestation = $form->get('prestation')->getData();
         $dateDemande  = new DateTime();
 
-        // var_dump($entityPrestation);
            $demande->setClient($user);
            $demande->setPrestation($entityPrestation);
            $demande->setDateDemande($dateDemande);

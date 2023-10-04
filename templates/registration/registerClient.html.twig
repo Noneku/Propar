@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
+	
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-<div class="container  position-relative">
+<div class="container  position-relative cursor-pointer">
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-md-6">
             <h1 class="text-center">Inscription</h1>
@@ -21,7 +21,7 @@
             <div class="mb-3 cursor-pointer">
                 {{ form_row(registrationForm.adresse, { 'attr': {'class': 'form-control'} }) }}
             </div>
-             <div id="adresse-suggestions" class="position-absolute"></div>
+             <div id="adresse-suggestions" class="position-absolute bg-light"></div> {# Défini l'arrière-plan en blanc #}
             <div class="mb-3">
                 {{ form_row(registrationForm.tel, { 'attr': {'class': 'form-control'} }) }}
             </div>

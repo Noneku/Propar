@@ -1,4 +1,4 @@
-(function ($) {
+y(function ($) {
     "use strict";
 
     // Spinner
@@ -90,6 +90,7 @@
         items: 1,
         dotsData: true,
     });
+    
     
 })(jQuery);
 

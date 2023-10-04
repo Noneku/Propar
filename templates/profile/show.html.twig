@@ -9,20 +9,20 @@
 
     <dl>
         <dt>Email:</dt>
-        <dd>{{ client.email }}</dd>
+        <dd>{{ client.getEmail() }}</dd>
 
         <dt>Nom:</dt>
-        <dd>{{ client.nom }}</dd>
+        <dd>{{ client.getNom() }}</dd>
 
         <dt>Prénom:</dt>
-        <dd>{{ client.prenom }}</dd>
+        <dd>{{ client.getPrenom() }}</dd>
 
         <dt>Téléphone:</dt>
-        <dd>{{ client.tel }}</dd>
+        <dd>{{ client.getTel() }}</dd>
 
         <dt>Adresse:</dt>
-        <dd>{{ client.adresse }}</dd>
+        <dd>{{ client.getAdresse() }}</dd>
     </dl>
 
-    <a href="{{ path('app_profile_edit', { 'id': client.id }) }}" class="btn btn-primary">Modifier le profil</a>
+    <a href="{{ path('app_profile_edit') }}" class="btn btn-primary">Modifier le profil</a>
 {% endblock %}

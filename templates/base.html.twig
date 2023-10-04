@@ -1,226 +1,197 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
-		<base
-		href="/">
-		<!-- Favicon -->
-		<link
-		href="img/favicon.ico" rel="icon">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Welcome!{% endblock %}
+    </title>
+    <base href="/">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-		<!-- Google Web Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@200;600;700&display=swap" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@200;600;700&display=swap" rel="stylesheet">
 
-		<!-- Icon Font Stylesheet -->
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-		<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-		<!-- Libraries Stylesheet -->
-		<link href="lib/animate/animate.min.css" rel="stylesheet">
-		<link
-		href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-		<!-- Customized Bootstrap Stylesheet -->
-		<link
-		href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-		<!-- Template Stylesheet -->
-		<link href="css/style.css" rel="stylesheet">
-		<style>
-    #adresse-suggestions {
-        background-color: white; /* Définir l'arrière-plan en blanc */
-        cursor: pointer; /* Modifier le pointeur de la souris */
-    }
-</style>
-		{% block header %}
-			<header>
-				<!-- Header Start -->
-				<div class="container-fluid sticky-top bg-danger">
-					<nav
-						class="navbar navbar-expand-lg navbar-light p-0">
-						<!-- Aligner les éléments à gauche -->
-						<div
-							class="navbar-nav" style="margin-left: 50px;">
-							<!-- Ajoutez une marge à droite -->
-							<a href="{{ path('app_home')}}" class="nav-item nav-link active">Accueil</a>
-							<a href="{{ path('app_demande')}}" class="nav-item nav-link">Demande de Prestation</a>
-							<a href="{{ path('app_prestations')}}" class="nav-item nav-link">Prestations</a>
-							</div>
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 
-							<!-- Logo au centre -->
-							<a href="{{ path('app_home') }}" class="navbar-brand mx-auto">
-								<img src="img\Logo.png" alt="propar" style="width: 80px; height: auto;">
-							</a>
-
-							<!-- Aligner les éléments à droite -->
-							<div
-								class="navbar-nav" style="margin-right: 50px;">
-								<!-- Ajoutez une marge à gauche -->
-								{% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_USER') %}
-									<div class="nav-item dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
-										<div
-											class="dropdown-menu bg-light mt-2">
-											{# Probléme à régler avec ces deux lignes #}
-											<a href="{{ path('app_profile_show', { 'id': client.id }) }}" class="dropdown-item">Consulter son profil</a>
-											<a href="{{ path('app_profile_edit', { 'id': client.id }) }}" class="dropdown-item">Modifier son profile</a>
-											<a href="testimonial.html" class="dropdown-item">Bien</a>
-											<a href="blog.html" class="dropdown-item">Quoi</a>
-											<a href="404.html" class="dropdown-item">Mettre</a>
-										</div>
+    {% block header %}
+    <header>
+        <!-- Header Start -->
+        <div class="container-fluid sticky-top bg-danger">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <!-- Aligner les éléments à gauche -->
+                        <a href="{{ path('app_home') }}" class="navbar-brand mx-auto">
+                            <img src="img\Logo.png" alt="propar" style="width: 80px; height: auto;">
+                        </a>
+                        <div class="navbar-nav ms-auto" style="margin-left: 50px;">
+                            <!-- Ajoutez une marge à droite -->
+                            <a href="{{ path('app_home')}}" class="nav-item nav-link active">Accueil</a>
+                            <a href="{{ path('app_demande')}}" class="nav-item nav-link">Demande de Prestation</a>
+                            <a href="{{ path('app_prestations')}}" class="nav-item nav-link">Prestations</a>
+                            <a href="contact" class="nav-item nav-link">Contact</a>
+                        </div>
+						<div class="navbar-nav" style="margin-right: 50px;">
+							<!-- Ajoutez une marge à gauche -->
+							{% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_USER') %}
+								<div class="nav-item dropdown d-flex align-items-center">
+									<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
+									<div class="dropdown-menu bg-light mt-2">
+										{# Problème à régler avec ces deux lignes #}
+										<a href="{{ path('app_profile_show') }}" class="dropdown-item">Consulter son profil</a>
+										{# <a href="{{ path('app_profile_edit', { 'id': client.id }) }}" class="dropdown-item">Modifier son profil</a> #}
+										<a href="testimonial.html" class="dropdown-item">Bien</a>
+										<a href="blog.html" class="dropdown-item">Quoi</a>
+										<a href="404.html" class="dropdown-item">Mettre</a>
 									</div>
-									{% elseif is_granted('ROLE_EMPLOYE') %}
-									<div class="nav-item dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Consultation Technique</a>
-										<div
-											class="dropdown-menu bg-light mt-2">
-											<a href="{{ path('app_demande_dashboard') }}" class="dropdown-item">Dashboard - Demandes</a>
-											<a href="{{ path('app_operation') }}" class="dropdown-item">Dashboard - Opérations</a>
-											<a href="testimonial.html" class="dropdown-item">Bien</a>
-											<a href="blog.html" class="dropdown-item">Quoi</a>
-											<a href="404.html" class="dropdown-item">Mettre</a>
-										</div>
+								</div>
+							{% elseif is_granted('ROLE_EMPLOYE') %}
+								<div class="nav-item dropdown d-flex align-items-center">
+									<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Consultation Technique</a>
+									<div class="dropdown-menu bg-light mt-2">
+										<a href="{{ path('app_demande_dashboard') }}" class="dropdown-item">Dashboard - Demandes</a>
+										<a href="{{ path('app_operation') }}" class="dropdown-item">Dashboard - Opérations</a>
+										<a href="testimonial.html" class="dropdown-item">Bien</a>
+										<a href="blog.html" class="dropdown-item">Quoi</a>
+										<a href="404.html" class="dropdown-item">Mettre</a>
 									</div>
-								{% endif %}
-								<a href="contact" class="nav-item nav-link">Contact</a>
+								</div>
+							{% endif %}
+							<span class="mx-2"></span>
+							<!-- Ajoutez cette ligne pour créer un espace -->
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<a href="{{ path('app_logout') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Déconnexion</a>
+							{% else %}
 								<a href="{{ path('app_register') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Inscription</a>
-								<span class="mx-2"></span>
-								<!-- Ajoutez cette ligne pour créer un espace -->
-								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-									<a href="{{ path('app_logout') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Déconnexion</a>
-								{% else %}
-									<a href="{{ path('app_login_client') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Connexion</a>
-								{% endif %}
-							</div>
-						</nav>
-					</div>
-					<!-- Header End -->
-				</header>
-			{% endblock %}
-			{% block headerEmploye %}{% endblock %}
-
-
-			{% block body %}
-				<body>
-					<!-- Spinner Start -->
-					<div id="spinner" class="show bg-danger position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-						<div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-							<span class="sr-only">Loading...</span>
+								<a href="{{ path('app_login_client') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Connexion</a>
+							{% endif %}
 						</div>
-					</div>
-					<!-- Spinner End -->
-				</body>
-			{% endblock %}
-		</head>
-		
+                    </div>
+
+                    <!-- Logo au centre -->
+
+                    <!-- Aligner les éléments à droite -->
+                </nav>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    {% endblock %}
+    {% block headerEmploye %}{% endblock %}
+</head>
+<body>
+    {% block body %}
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-danger position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+    {% endblock %}
+</body>
 {% block footer %}
 <footer>
-	<!-- Footer Start -->
-	<div class="container-fluid bg-danger text-white footer">
-		<div class="container py-5">
-			<div class="row g-5">
-				<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-					<a href="home/client" class="d-inline-block mb-3">
-						<img src="img\Logo.png" alt="propar" style="width: 100px; height: auto;">
-					</a>
-					<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus.</p>
-				</div>
-				<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-					<h5 class="mb-4">Get In Touch</h5>
-					<p>
-						<i class="fa fa-map-marker-alt me-3"></i>120 Rue du Luxembourg, 59100, Roubaix</p>
-					<p>
-						<i class="fa fa-phone-alt me-3"></i>+33 6 21 45 68 95</p>
-					<p>
-						<i class="fa fa-envelope me-3"></i>info@example.com</p>
-					<div class="d-flex pt-2">
-						<a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com/GREATTEACHERAZ">
-							<i class="fab fa-twitter"></i>
-						</a>
-						<a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/younes.azj/">
-							<i class="fab fa-facebook-f"></i>
-						</a>
-						<a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/azj.59/">
-							<i class="fab fa-instagram"></i>
-						</a>
-						<a class="btn btn-square btn-outline-primary me-1" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">
-							<i class="fab fa-linkedin-in"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-					<h5 class="mb-4">Nos Prestation</h5>
-					<a class="btn btn-link" href="petite/prestation">Petite Prestation</a>
-					<a class="btn btn-link" href="moyenne/prestation">Moyenne Prestation</a>
-					<a class="btn btn-link" href="grosse/prestation">Grosse Prestation</a>
+    <!-- Footer Start -->
+    <div class="container-fluid bg-danger text-white footer">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <a href="home/client" class="d-inline-block mb-3">
+                        <img src="img\Logo.png" alt="propar" style="width: 100px; height: auto;">
+                    </a>
+                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus.</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <h5 class="mb-4">Get In Touch</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>120 Rue du Luxembourg, 59100, Roubaix</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+33 6 21 45 68 95</p>
+                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com/GREATTEACHERAZ">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/younes.azj/">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/azj.59/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <h5 class="mb-4">Nos Prestations</h5>
+                    <a class="btn btn-link" href="petite/prestation">Petite Prestation</a>
+                    <a class="btn btn-link" href="moyenne/prestation">Moyenne Prestation</a>
+                    <a class="btn btn-link" href="grosse/prestation">Grosse Prestation</a>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h5 class="mb-4">Liens Populaires</h5>
+                    <a class="btn btn-link" href="">A Propos de Nous</a>
+                    <a class="btn btn-link" href="contact">Contacter Nous</a>
+                    <a class="btn btn-link" href="politique/confidentialite">Politique de Confidentialité</a>
+                    <a class="btn btn-link" href="">Termes & Conditions</a>
+                </div>
+            </div>
+        </div>
+        <div class="container wow fadeIn" data-wow-delay="0.1s">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="https://www.instagram.com/azj.59/">PROPAR</a>, All Right Reserved.
+                        Designed By <a class="border-bottom" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">Nassim, Nicolas, Fabien, Younes</a>
+                        Distributed by <a href="https://www.afpa.fr/centre/centre-de-roubaix">Afpa</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="{{ path('app_home') }}">Home</a>
+                            <a href="">Cookies</a>
+                            <a href="">Help</a>
+                            <a href="">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
 
-				</div>
-				<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-					<h5 class="mb-4">Lien Populaire</h5>
-					<a class="btn btn-link" href="">A Propos de Nous</a>
-					<a class="btn btn-link" href="contact">Contacter Nous</a>
-					<a class="btn btn-link" href="politique/confidentialite">Politique de Confidentialité</a>
-					<a class="btn btn-link" href="">Termes & Condition</a>
+    <!-- Back to Top -->
+    <a href="{{ path('app_home') }}" class="btn btn-lg btn-primary btn-lg-square back-to-top bg-danger">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 
-				</div>
-			</div>
-		</div>
-		<div class="container wow fadeIn" data-wow-delay="0.1s">
-			<div class="copyright">
-				<div class="row">
-					<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-						&copy;
-						<a class="border-bottom" href="https://www.instagram.com/azj.59/">PROPAR</a>, All Right Reserved.
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
 
-						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						Designed By
-						<a class="border-bottom" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">Nassim, Nicolas, Fabien, Younes</a>
-						Distributed by
-						<a href="https://www.afpa.fr/centre/centre-de-roubaix">Afpa</a>
-					</div>
-					<div class="col-md-6 text-center text-md-end">
-						<div class="footer-menu">
-							<a href="">Home</a>
-							<a href="">Cookies</a>
-							<a href="">Help</a>
-							<a href="">FAQs</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Footer End -->
-
-
-	<!-- Back to Top -->
-	<a href="home/client" class="btn btn-lg btn-primary btn-lg-square back-to-top bg-danger">
-		<i class="bi bi-arrow-up"></i>
-	</a>
-
-
-	<!-- JavaScript Libraries -->
-	<script src="js/lib/wow/wow.min.js"></script>
-	<script src="js/lib/easing/easing.min.js"></script>
-	<script src="js/lib/waypoints/waypoints.min.js"></script>
-	<script src="js/lib/owlcarousel/owl.carousel.min.js"></script>
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-	<!-- Template Javascript -->
-	<script src="js/main.js"></script>
-
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
 </footer>
 {% endblock %}
-    </head>
 </html>

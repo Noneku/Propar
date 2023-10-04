@@ -21,7 +21,9 @@
                         <td>{{ operation.getId() }}</td>
                         <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
-                        <td>{{ operation.getEmploye().getMatricule() }} <button class="btn btn-primary bg-danger">Consulter</button></td>
+                        <td>{{ operation.getEmploye().getMatricule() }} 
+                            <button class="btn btn-primary bg-danger">Consulter</button>
+                            <button class="btn btn-primary bg-danger">Terminer</button>                
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
                     </tr>
                     

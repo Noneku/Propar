@@ -4,21 +4,16 @@ namespace App\Controller;
 
 
 use App\Entity\Demande;
-use App\Entity\Opération;
-use App\Entity\Employe;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use App\Repository\DemandeRepository; 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
 use Symfony\Component\Security\Core\Security;
 
 class DemandeDashBoardController extends AbstractController
 {
     #[Route('/demande/dashboard', name: 'app_demande_dashboard')]
-    public function index(EntityManagerInterface $entityManager, DemandeRepository $demandeRepository): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
      
 
@@ -37,7 +32,7 @@ class DemandeDashBoardController extends AbstractController
 
     // ...
     
-    public function acceptOperation(EntityManagerInterface $entityManager, Operation $operation, Security $security): Response
+    public function acceptOperation(EntityManagerInterface $entityManager, $security): Response
     {
         // Récupérez l'utilisateur actuellement connecté
         $user = $security->getUser();
@@ -56,7 +51,7 @@ class DemandeDashBoardController extends AbstractController
         }
     
         // Vérifiez le nombre d'opérations déjà acceptées par l'utilisateur
-        $nombreOperationsAcceptees = $user->getNombreOperationsAcceptees(); // Supposons que vous ayez cette méthode dans votre entité Utilisateur
+        $nombreOperationsAcceptees = $user->getNombreOperationAcceptees(); // Supposons que vous ayez cette méthode dans votre entité Utilisateur
     
         if ($nombreOperationsAcceptees >= $nombreMaxOperations) {
             // Redirigez ou affichez un message d'erreur, car l'employé a atteint sa limite d'opérations acceptables
@@ -67,7 +62,7 @@ class DemandeDashBoardController extends AbstractController
         // Si tout est en ordre, acceptez l'opération ici...
     
         // Incrémentez le nombre d'opérations acceptées par l'utilisateur
-        $user->setNombreOperationsAcceptees($nombreOperationsAcceptees + 1);
+        $user->setNombreOperationAcceptees($nombreOperationsAcceptees + 1);
     
         // Enregistrez les modifications dans la base de données
         $entityManager->flush();
@@ -100,38 +95,3 @@ class DemandeDashBoardController extends AbstractController
 
 
 
-// public function acceptOperation(EntityManagerInterface $entityManager, Operation $operation, Security $security): Response
-// {
-//     // Récupérez l'utilisateur actuellement connecté
-//     $user = $security->getUser();
-
-//     // Vérifiez si l'utilisateur a le rôle approprié pour accepter l'opération
-//     if (!$this->isGranted('ROLE_EMPLOYE', $user)) {
-//         // Redirigez ou affichez un message d'erreur, car l'utilisateur n'a pas les droits nécessaires
-//         // Exemple de redirection :
-//         return $this->redirectToRoute('app_dashboard');
-//     }
-
-//     // Vérifiez le nombre d'opérations déjà acceptées par l'employé
-//     $nombreOperationsAcceptees = $user->getNombreOperationsAcceptees(); // Supposons que vous ayez cette méthode dans votre entité Utilisateur
-
-//     // Définissez un nombre maximal d'opérations acceptables par l'employé
-//     $nombreMaxOperations = 5; // Vous pouvez adapter cette valeur en fonction de vos besoins
-
-//     if ($nombreOperationsAcceptees >= $nombreMaxOperations) {
-//         // Redirigez ou affichez un message d'erreur, car l'employé a atteint sa limite d'opérations acceptables
-//         // Exemple de redirection :
-//         return $this->redirectToRoute('app_dashboard');
-//     }
-
-//     // Si tout est en ordre, acceptez l'opération ici...
-
-//     // Incrémentez le nombre d'opérations acceptées par l'employé
-//     $user->setNombreOperationsAcceptees($nombreOperationsAcceptees + 1);
-
-//     // Enregistrez les modifications dans la base de données
-//     $entityManager->flush();
-
-//     // Redirigez vers une page de confirmation ou toute autre page appropriée
-//     return $this->redirectToRoute('app_dashboard');
-// }

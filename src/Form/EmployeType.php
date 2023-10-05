@@ -23,8 +23,8 @@ class EmployeType extends AbstractType
                     'SENIOR' => 'ROLE_SENIOR',
                     'APPRENTI' => 'ROLE_APPRENTI',
                 ],
-                'placeholder' => 'Sélectionnez une option', // Optionnel : affichez un libellé par défaut
-                'label' => 'Roles', // Optionnel : spécifiez l'étiquette du champ
+                'placeholder' => 'Sélectionnez une option', // Optionnel : affiche un libellé par défaut
+                'label' => 'Roles', // Optionnel : spécifie l'étiquette du champ
                 'multiple' => false
             ])
             ->add('plainPassword', PasswordType::class, [

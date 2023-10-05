@@ -81,12 +81,14 @@ security:
 
     # Configuration de l'accès aux ressources
     access_control:
-        - { path: ^/gestion, roles: ROLE_EXPERT }
-        - { path: ^/(demande|traitement), roles: ROLE_SENIOR }
-        - { path: ^/(demande|traitement|operation), roles: ROLE_APPRENTI }
+    - { path: ^/gestion, roles: ROLE_EXPERT }
+    - { path: ^/demande, roles: [ROLE_SENIOR, ROLE_APPRENTI] }
+    - { path: ^/traitement, roles: [ROLE_SENIOR, ROLE_APPRENTI] }
+    - { path: ^/operation, roles: [ROLE_SENIOR,ROLE_APPRENTI] }
+
     role_hierarchy:
-        ROLE_APPRENTI: ROLE_SENIOR
         ROLE_EXPERT: ROLE_SENIOR
+        ROLE_SENIOR: ROLE_APPRENTI
        
 
 when@test:

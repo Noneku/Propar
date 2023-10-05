@@ -27,6 +27,9 @@ class Operation
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_operation = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_fin_operation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class Operation
     public function setDateOperation(\DateTimeInterface $date_operation): static
     {
         $this->date_operation = $date_operation;
+
+        return $this;
+    }
+
+    public function getDateFinOperation(): ?\DateTimeInterface
+    {
+        return $this->date_fin_operation;
+    }
+
+    public function setDateFinOperation(?\DateTimeInterface $date_fin_operation): static
+    {
+        $this->date_fin_operation = $date_fin_operation;
 
         return $this;
     }

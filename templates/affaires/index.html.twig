@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AffairesController!{% endblock %}
+
+
+
+{% block body %}
+<h1>Calcul du Chiffre d'Affaires</h1>
+
+{{ form_start(form) }}
+    {{ form_row(form.dateEntree) }}
+    {{ form_row(form.dateSortie) }}
+    <button type="submit">Calculer</button>
+{{ form_end(form) }}
+
+{% if chiffreAffaire > 0 %}
+    <div class="canva">
+        <canvas id="myChart"></canvas>
+    </div>
+    <p>Chiffre d'affaires pour la période sélectionnée : {{ chiffreAffaire }} €</p>
+{% else %}
+    <p>Aucun chiffre d'affaires calculé pour les dates sélectionnées.</p>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Grosse Prestation', 'Moyenne Prestation', 'Petite Prestation'],
+            datasets: [{
+                label: '# of Votes',
+                data: [{{ total1 }}, {{ total2 }}, {{ total3 }}],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

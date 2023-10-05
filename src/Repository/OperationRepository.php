@@ -27,36 +27,76 @@ class OperationRepository extends ServiceEntityRepository
     */
     private $entityManager;
 
-    public function calculateChiffreDaffairesByYear(\DateTime $startDate, \DateTime $endDate): array
+    /**
+     * @param \DateTimeInterface $dateDebut
+     * @param \DateTimeInterface $dateFin
+     * @return Operation[]
+     */
+    public function findOperationsByDateRange(\DateTimeInterface $dateDebut, \DateTimeInterface $dateFin): array
     {
-        $chiffreAffaires = [];
-    
-        // Récupérer les opérations terminées entre les dates spécifiées
-        $operations = $this->entityManager
-            ->createQueryBuilder()
-            ->select('o, d, p')
-            ->from(Operation::class, 'o')
-            ->leftJoin('o.demande', 'd')
-            ->leftJoin('d.prestation', 'p')
+        return $this->createQueryBuilder('o')
             ->where('o.status = :status')
-            ->andWhere('o.dateOperation BETWEEN :startDate AND :endDate')
-            ->setParameter('status', true)
-            ->setParameter('startDate', $startDate)
-            ->setParameter('endDate', $endDate)
+            ->andWhere('o.date_operation BETWEEN :dateDebut AND :dateFin')
+            ->setParameter('status', true) // Remplacez true par la valeur appropriée pour votre statut "0"
+            ->setParameter('dateDebut', $dateDebut->format('Y-m-d 00:00:00'))
+            ->setParameter('dateFin', $dateFin->format('Y-m-d 23:59:59'))
             ->getQuery()
             ->getResult();
-    
-        // Calculer le chiffre d'affaires pour chaque année
-        foreach ($operations as $operation) {
-            $annee = $operation->getDateOperation()->format('Y');
-            $chiffreAffaire = $operation->getDemande()->getPrestation()->getPrix();
-    
-            // Ajouter le chiffre d'affaires à l'année correspondante
-            $chiffreAffaires[$annee] = ($chiffreAffaires[$annee] ?? 0) + $chiffreAffaire;
-        }
-    
-        return $chiffreAffaires;
     }
+}
+
+
+
+
+
+
+
+    // public function calculateChiffreDaffairesByYear(): array
+    // {
+    //     $chiffreAffaires = [];
+    
+    //     // Récupérer les opérations terminées entre les dates spécifiées
+    //     $operations = $this->entityManager
+    //         ->createQueryBuilder()
+    //         ->select('o, d, p')
+    //         ->from(Operation::class, 'o')
+    //         ->leftJoin('o.demande', 'd')
+    //         ->leftJoin('d.prestation', 'p')
+    //         ->where('o.status = :status')
+    //         ->setParameter('status', true)
+    //         ->getQuery()
+    //         ->getResult();
+    
+    //     // Calculer le chiffre d'affaires pour chaque année
+    //     foreach ($operations as $operation) {
+    //         $annee = $operation->getDateOperation()->format('Y');
+    //         $chiffreAffaire = $operation->getDemande()->getPrestation()->getPrix();
+    
+    //         // Ajouter le chiffre d'affaires à l'année correspondante
+    //         $chiffreAffaires[$annee] = ($chiffreAffaires[$annee] ?? 0) + $chiffreAffaire;
+    //     }
+    
+    //     return $chiffreAffaires;
+    // }
+
+    // public function calculateChiffreDaffairesByYears(): array
+    // {
+    //     $chiffreAffaire = $this->entityManager
+    //         ->createQueryBuilder()
+    //         ->select('SUM(p.prix)')
+    //         ->from(Operation::class, 'o')
+    //         ->leftJoin('o.demande', 'd')
+    //         ->leftJoin('d.prestation', 'p')
+    //         ->where('o.status = :status')
+    //         ->setParameter('status', true)
+    //         ->getQuery()
+    //         ->getSingleScalarResult();
+    
+    //     return $chiffreAffaire->getResult();
+    // }
+
+
+
     
 //    public function findByExampleField($value): array
 //    {
@@ -79,4 +119,4 @@ class OperationRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+

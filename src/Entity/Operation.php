@@ -94,4 +94,11 @@ class Operation
 
         return $this;
     }
+
+    /**
+    * @return bool
+    */
+    public function getStatus(): bool {
+    	return $this->status;
+    }
 }

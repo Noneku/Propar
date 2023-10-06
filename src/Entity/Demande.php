@@ -30,6 +30,7 @@ class Demande
 
     #[ORM\OneToMany(mappedBy: 'demande', targetEntity: Operation::class, orphanRemoval: true)]
     private Collection $operation;
+    
 
     public function __construct()
     {
@@ -108,6 +109,8 @@ class Demande
 
         return $this;
     }
+
+  
 
    
 }

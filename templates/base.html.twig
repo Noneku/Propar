@@ -134,7 +134,7 @@
 				<div class="container py-5">
 					<div class="row g-5">
 						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-							<a href="home/client" class="d-inline-block mb-3">
+							<a href="{{ path('app_home') }}" class="d-inline-block mb-3">
 								<img src="img\Logo.png" alt="propar" style="width: 100px; height: auto;">
 							</a>
 							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus.</p>
@@ -164,9 +164,9 @@
 						</div>
 						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
 							<h5 class="mb-4">Nos Prestations</h5>
-							<a class="btn btn-link" href="petite/prestation">Petite Prestation</a>
-							<a class="btn btn-link" href="moyenne/prestation">Moyenne Prestation</a>
-							<a class="btn btn-link" href="grosse/prestation">Grosse Prestation</a>
+							<a class="btn btn-link" href="{{ path('app_prestations') }}">Petite Prestation</a>
+							<a class="btn btn-link" href="{{ path('app_prestations') }}">Moyenne Prestation</a>
+							<a class="btn btn-link" href="{{ path('app_prestations') }}">Grosse Prestation</a>
 						</div>
 						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
 							<h5 class="mb-4">Liens Populaires</h5>

@@ -21,17 +21,20 @@
                         <td>{{ operation.getId() }}</td>
                         <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
-                        <td>{{ operation.getEmploye().getMatricule() }} 
-                            <button class="btn btn-primary bg-danger">Consulter</button>
-                            <button class="btn btn-primary bg-danger">Terminer</button>                
+                        <td>
+                            {{ operation.getEmploye().getMatricule() }} 
+                        <td>
+                            {{ operation.getEmploye().getMatricule() }} 
+                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if operation.isStatus() == 1 %}disabled{% endif %}">Modifier</button></a>
+                            <button class="btn btn-primary bg-danger finish-operation {% if operation.isStatus() == 1 %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if operation.isStatus() == 1 %}disabled{% endif %}>Terminer</button>
+                        </td>
+
+                        </td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
                     </tr>
-                    
                  {% endfor %}
             </tbody>
         </table>
     </div>
-{% endblock %}
-{% block footer %}
-    {{ parent() }}
+    <script src="{{ asset('js/terminer_operation.js') }}"></script>
 {% endblock %}

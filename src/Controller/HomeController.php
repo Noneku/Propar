@@ -15,7 +15,6 @@ class HomeController extends AbstractController
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             $client = $this->getUser();
         } else {
-            // Si l'utilisateur n'est pas authentifié, $client est null ou non défini
             $client = null;
         }
         

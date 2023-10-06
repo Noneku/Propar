@@ -50,6 +50,9 @@ class DemandeController extends AbstractController
            // Envoie un e-mail pour notifier la soumission de la demande
            $this->sendNotificationEmail($user, $demande, $mailer);
 
+           // Informer l'utilisateur que la demande a bien été soumise
+           $this->addFlash('success', 'Votre demande a été soumise avec succès.');
+
            // Redirigez vers une autre page ou effectuez une autre action
            return $this->redirectToRoute('app_home');
        }
@@ -64,7 +67,7 @@ class DemandeController extends AbstractController
    private function sendNotificationEmail($user, $demande, $mailer)
    {
        $email = (new Email())
-           ->from('votre_email@example.com') // Remplacez par votre adresse e-mail
+           ->from('stepropar@outlook.fr') // Remplacez par votre adresse e-mail
            ->to($user->getEmail()) // Utilisez l'e-mail de l'utilisateur
            ->subject('Nouvelle demande soumise')
            ->html('<p>Votre demande a été soumise avec succès.</p>'); // Personnalisez le contenu de l'e-mail selon vos besoins

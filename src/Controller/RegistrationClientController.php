@@ -17,10 +17,11 @@ class RegistrationClientController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+
         $user = new Client();
         $form = $this->createForm(RegistrationClientFormType::class, $user);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user->setRoles(["ROLE_USER"]);
@@ -35,6 +36,7 @@ class RegistrationClientController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+            
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('app_home');
@@ -44,4 +46,5 @@ class RegistrationClientController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+    
 }

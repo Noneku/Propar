@@ -21,6 +21,7 @@
                         <td>{{ demande.getPrestation().getNom() }}</td>
                         <td>{{ demande.getClient().getNom() }} {{ demande.getClient().getPrenom() }}</td>
                         <td>{{ demande.getDateDemande()|date('Y-m-d H:i:s')  }}</td>
+                    </tr>                   
                         <td><a href="{{ path('app_open_operation', { 'id': demande.getId() }) }}" class="btn btn-danger">Accepter</a></td>
                         <td><button class="btn btn-primary">Plus d'infos</button></td>
                     </tr>

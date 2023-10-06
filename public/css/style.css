@@ -99,7 +99,7 @@ img.animated.pulse {
 }
 
 /* Styles pour la barre de navigation en mode mobile */
-@media (max-width: 991.98px) {
+@media (max-width: 992px) {
     .navbar .navbar-nav {
         padding: 0 15px; /* Espacement interne des éléments de menu */
         background: transparent; /* Couleur de fond en mode mobile */
@@ -108,6 +108,10 @@ img.animated.pulse {
     .navbar .navbar-nav .nav-link  {
         margin-right: 0; /* Aucune marge à droite */
         padding: 10px 0; /* Espacement interne des liens de navigation */
+    }
+
+    .navbar-collapse {
+        background-color: #dc3545;
     }
 }
 /* Styles pour la barre de navigation en mode bureau */
@@ -419,3 +423,4 @@ img.animated.pulse {
     padding-right: 0; /* Aucun espacement interne à droite pour le dernier élément du menu */
     border-right: none; /* Suppression de la bordure à droite pour le dernier élément du menu */
 }
+

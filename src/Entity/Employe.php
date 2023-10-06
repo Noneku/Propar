@@ -37,6 +37,8 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'employe', cascade: ['persist', 'remove'])]
     private ?Operation $operation = null;
 
+    private ?int $NombreOperationAcceptees = null;
+
 
     public function getId(): ?int
     {
@@ -145,6 +147,18 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->operation = $operation;
+
+        return $this;
+    }
+
+    public function getNombreOperationAcceptees(): ?int
+    {
+        return $this->NombreOperationAcceptees;
+    }
+
+    public function setNombreOperationAcceptees(?int $NombreOperationAcceptees): static
+    {
+        $this->NombreOperationAcceptees = $NombreOperationAcceptees;
 
         return $this;
     }   

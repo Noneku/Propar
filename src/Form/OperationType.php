@@ -16,7 +16,7 @@ class OperationType extends AbstractType
             // Utilisez EntityType pour afficher un champ de sélection pour l'employé
             ->add('employe', EntityType::class, [
                 'class' => 'App\Entity\Employe', // Remplacez par la classe réelle de l'employé
-                'choice_label' => 'matricule', // L'attribut de l'employé à afficher dans la liste
+                'choice_label' => 'Nom', // L'attribut de l'employé à afficher dans la liste
                 'multiple' => false,
                 // Vous pouvez également ajouter d'autres options comme 'expanded' et 'multiple' si nécessaire
             ]);

@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class OperationController extends AbstractController
 {
@@ -24,8 +26,10 @@ class OperationController extends AbstractController
     }
 
     #[Route('/operation/{id}/edit', name: 'app_operation_edit')]
+    #[Security('is_granted("ROLE_EXPERT")')] //autorise uniquement l'expert
     public function edit(EntityManagerInterface $entityManager, Operation $operation, Request $request): Response
     {
+       
         // Créez un formulaire pour la modification de l'employé (vous devez créer ce formulaire)
         $form = $this->createForm(OperationType::class, $operation);
         

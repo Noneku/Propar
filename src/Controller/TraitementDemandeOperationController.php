@@ -24,7 +24,7 @@ class TraitementDemandeOperationController extends AbstractController
         $operation->setDemande($demande);
         //Replace User by entity type employee
         $operation->setEmploye($this->getUser());
-        $operation->setStatus(true);
+        $operation->setStatus(false);//met le satatus '0' qui signifie opération en cours
         $dateOperation  = new DateTime();
         $operation->setDateOperation($dateOperation);
 

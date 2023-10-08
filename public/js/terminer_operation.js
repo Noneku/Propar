@@ -16,4 +16,12 @@ document.querySelectorAll('.finish-operation').forEach(function(button) {
     });
 });
 
+const toggleCompletedCheckbox = document.getElementById('toggle-completed-operations');
+toggleCompletedCheckbox.addEventListener('change', function() {
+    const completedOperations = document.querySelectorAll('.completed-operation');
+    completedOperations.forEach(function(operation) {
+        operation.style.display = toggleCompletedCheckbox.checked ? 'table-row' : 'none';
+    });
+});
+
 

@@ -4,37 +4,47 @@
 
 {% block body %}
  <div class="container">
-        <h1>Tableau de bord</h1>
+    <h1>Tableau de bord</h1>
+    
+    <!-- Ajoutez la case à cocher pour filtrer les opérations terminées -->
+    <label for="toggle-completed-operations">Afficher les opérations terminées</label>
+    <input type="checkbox" id="toggle-completed-operations">
+    
+    <div id="operations-table">
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Prestation choisie</th>
                     <th>Client</th>
-                    <th>Matricule - Employé</th>
+                    <th>Employé</th>
                     <th>Date - Opération</th>
                 </tr>
             </thead>
             <tbody>
                 {% for operation in operations %}
-                    <tr>
+                    {% set isCompleted = operation.isStatus() == 1 %}
+                    <tr class="{% if isCompleted %}completed-operation{% endif %}" {% if isCompleted %}style="display: none;"{% endif %}>
                         <td>{{ operation.getId() }}</td>
                         <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
-                        <td>
-                            {{ operation.getEmploye().getMatricule() }} 
-                        <td>
-                            {{ operation.getEmploye().getMatricule() }} 
-                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if operation.isStatus() == 1 %}disabled{% endif %}">Modifier</button></a>
-                            <button class="btn btn-primary bg-danger finish-operation {% if operation.isStatus() == 1 %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if operation.isStatus() == 1 %}disabled{% endif %}>Terminer</button>
-                        </td>
-
-                        </td>
+                        <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
+                        <td>{{ operation.getEmploye().getMatricule() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
+                        <td>
+                            {{ operation.getEmploye().getMatricule() }} 
+                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
+                            <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button>
+                        </td>
                     </tr>
                  {% endfor %}
             </tbody>
         </table>
     </div>
-    <script src="{{ asset('js/terminer_operation.js') }}"></script>
+    
+</div>
+
+<!-- Inclusion du script JavaScript externe -->
+<script src="{{ asset('js/terminer_operation.js') }}"></script>
+
 {% endblock %}

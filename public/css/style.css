@@ -424,8 +424,3 @@ img.animated.pulse {
     border-right: none; /* Suppression de la bordure à droite pour le dernier élément du menu */
 }
 
-.canva {
-    width: 25%; /* Définissez la largeur de votre diagramme ici */
-    height: 25%; /* Définissez la hauteur de votre diagramme ici */
-    margin: 0 auto; /* Centrez le diagramme horizontalement */
-}

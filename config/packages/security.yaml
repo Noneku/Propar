@@ -79,10 +79,11 @@ security:
 
     # Configuration de l'accès aux ressources
     access_control:
-    # - { path: ^/gestion, roles: ROLE_EXPERT }
-    # - { path: ^/demande, roles: [ROLE_SENIOR, ROLE_APPRENTI,ROLE_USER] }
-    # - { path: ^/traitement, roles: [ROLE_SENIOR, ROLE_APPRENTI] }
-    # - { path: ^/operation, roles: [ROLE_SENIOR,ROLE_APPRENTI] }
+    - { path: ^/affaires, roles: ROLE_EXPERT }
+    - { path: ^/gestion, roles: ROLE_EXPERT }
+    - { path: ^/demande, roles: [ROLE_SENIOR, ROLE_APPRENTI,ROLE_USER] }
+    - { path: ^/traitement, roles: [ROLE_SENIOR, ROLE_APPRENTI] }
+    - { path: ^/operation, roles: [ROLE_SENIOR,ROLE_APPRENTI] }
 
     role_hierarchy:
         ROLE_EXPERT: ROLE_SENIOR

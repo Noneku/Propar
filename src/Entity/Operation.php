@@ -15,7 +15,7 @@ class Operation
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?bool $status = null;
+    private ?bool $status = false;
 
     #[ORM\ManyToOne(inversedBy: 'operation')]
     #[ORM\JoinColumn(nullable: false)]
@@ -26,6 +26,9 @@ class Operation
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_operation = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_fin_operation = null;
 
     public function getId(): ?int
     {
@@ -79,4 +82,32 @@ class Operation
 
         return $this;
     }
+
+    public function getDateFinOperation(): ?\DateTimeInterface
+    {
+        return $this->date_fin_operation;
+    }
+
+    public function setDateFinOperation(?\DateTimeInterface $date_fin_operation): static
+    {
+        $this->date_fin_operation = $date_fin_operation;
+
+        return $this;
+    }
+
+    /**
+    * @return bool
+    */
+    public function getStatus(): bool {
+    	return $this->status;
+    }
+
+    public function finish(): static
+    {
+        $this->status = true;
+        dump('Finish method called');
+        return $this;
+    }
+
+
 }

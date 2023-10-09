@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="d-flex justify-content-center align-items-center">
+<div class="d-flex justify-content-center align-items-center mt-5">
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -28,6 +28,7 @@
         <button class="btn btn-lg btn-primary mt-4 mb-4" type="submit">
             Sign in
         </button>
+        <a href="{{ path('app_register') }}" class="nav-link" >Inscrivez-vous ici</a>
     </form>
 </div>
 {% endblock %}

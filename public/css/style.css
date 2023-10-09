@@ -99,7 +99,7 @@ img.animated.pulse {
 }
 
 /* Styles pour la barre de navigation en mode mobile */
-@media (max-width: 991.98px) {
+@media (max-width: 992px) {
     .navbar .navbar-nav {
         padding: 0 15px; /* Espacement interne des éléments de menu */
         background: transparent; /* Couleur de fond en mode mobile */

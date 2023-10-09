@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -43,6 +44,9 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
     private ?Demande $demande = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_client = null;
 
     public function getId(): ?int
     {
@@ -181,5 +185,17 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->nom . ' ' . $this->prenom;
+    }
+
+    public function getDescriptionClient(): ?string
+    {
+        return $this->description_client;
+    }
+
+    public function setDescriptionClient(?string $description_client): static
+    {
+        $this->description_client = $description_client;
+
+        return $this;
     }
 }

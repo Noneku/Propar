@@ -21,8 +21,6 @@ doctrine:
                 prefix: 'App\Entity'
                 alias: App
 
-            
-
 when@test:
     doctrine:
         dbal:
@@ -40,12 +38,6 @@ when@prod:
             result_cache_driver:
                 type: pool
                 pool: doctrine.result_cache_pool
-
-                dql:
-                datetime_functions:
-                    DAY: DoctrineExtensions\Query\Mysql\Day
-                    MONTH: DoctrineExtensions\Query\Mysql\Month
-                    YEAR: DoctrineExtensions\Query\Mysql\Year
 
     framework:
         cache:

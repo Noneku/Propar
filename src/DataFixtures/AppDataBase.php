@@ -49,6 +49,7 @@ class AppDataBase extends Fixture
                 $client->setTel($faker->phoneNumber);
                 $client->setPassword($faker->password);
                 $client->setRoles(['ROLE_USER']);
+                $client->setDescriptionClient("Ceci c'est du text");
                 
                 $manager->persist($client);
                 
@@ -77,6 +78,7 @@ class AppDataBase extends Fixture
                 $operation->setEmploye($employe);
                 $operation->setStatus(rand(0, 1));
                 $operation->setDateOperation($faker->dateTime);
+                (!$operation->getStatus()) ? $operation->setDateFinOperation($faker->dateTime) : null;
     
                 $manager->persist($operation);
 

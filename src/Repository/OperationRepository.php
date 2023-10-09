@@ -37,7 +37,7 @@ class OperationRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('o')
             ->where('o.status = :status')
             ->andWhere('o.date_operation BETWEEN :dateDebut AND :dateFin')
-            ->setParameter('status', true) // Remplacez true par la valeur appropriée pour votre statut "0"
+            ->setParameter('status', 0) // Remplacez true par la valeur appropriée pour votre statut "0"
             ->setParameter('dateDebut', $dateDebut->format('Y-m-d 00:00:00'))
             ->setParameter('dateFin', $dateFin->format('Y-m-d 23:59:59'))
             ->getQuery()

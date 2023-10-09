@@ -7,11 +7,14 @@
 {% block body %}
 <h1>Calcul du Chiffre d'Affaires</h1>
 
+
 {{ form_start(form) }}
-    {{ form_row(form.dateEntree) }}
-    {{ form_row(form.dateSortie) }}
-    <button type="submit">Calculer</button>
+{{ form_row(form.dateEntree) }}
+{{ form_row(form.dateSortie) }}
+<button type="submit">Calculer</button>
 {{ form_end(form) }}
+  
+
 
 {% if chiffreAffaire > 0 %}
     <div class="canva">

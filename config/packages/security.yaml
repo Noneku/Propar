@@ -68,8 +68,6 @@ security:
                 path: /
             entry_point: App\Security\EmployeAuthenticator
 
-    access_control:
-
         # - { path: '^/profile', roles: ROLE_USER }
     
 

@@ -18,7 +18,9 @@
                     <th>Prestation choisie</th>
                     <th>Client</th>
                     <th>Employé</th>
+                    <th>Matricule</th>
                     <th>Date - Opération</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -31,9 +33,8 @@
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
                         <td>{{ operation.getEmploye().getMatricule() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
-                        <td>
-                            {{ operation.getEmploye().getMatricule() }} 
-                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
+                        
+                            <td><a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
                             <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button>
                         </td>
                     </tr>

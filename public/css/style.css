@@ -424,3 +424,8 @@ img.animated.pulse {
     border-right: none; /* Suppression de la bordure à droite pour le dernier élément du menu */
 }
 
+.canva {
+    width: 50%; /* Vous pouvez ajuster la largeur selon vos besoins */
+    height: 50%; /* Vous pouvez ajuster la hauteur selon vos besoins */
+    margin-left: 25%; /* mettre une marge a gauche pour le diagramme*/
+}

@@ -1,197 +1,221 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>
-        {% block title %}Welcome!{% endblock %}
-    </title>
-    <base href="/">
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<base
+		href="/">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@200;600;700&display=swap" rel="stylesheet">
+		<!-- Favicon -->
+		<link
+		href="img/favicon.ico" rel="icon">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+		<!-- Google Web Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@200;600;700&display=swap" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+		<!-- Icon Font Stylesheet -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Libraries Stylesheet -->
+		<link href="lib/animate/animate.min.css" rel="stylesheet">
+		<link
+		href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+		<!-- Customized Bootstrap Stylesheet -->
+		<link
+		href="css/bootstrap.min.css" rel="stylesheet">
 
-    {% block header %}
-    <header>
-        <!-- Header Start -->
-        <div class="container-fluid sticky-top bg-danger">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light p-0">
-                    <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <!-- Aligner les éléments à gauche -->
-                        <a href="{{ path('app_home') }}" class="navbar-brand mx-auto">
-                            <img src="img\Logo.png" alt="propar" style="width: 80px; height: auto;">
-                        </a>
-                        <div class="navbar-nav ms-auto" style="margin-left: 50px;">
-                            <!-- Ajoutez une marge à droite -->
-                            <a href="{{ path('app_home')}}" class="nav-item nav-link active">Accueil</a>
-                            <a href="{{ path('app_demande')}}" class="nav-item nav-link">Demande de Prestation</a>
-                            <a href="{{ path('app_prestations')}}" class="nav-item nav-link">Prestations</a>
-                            <a href="contact" class="nav-item nav-link">Contact</a>
-                        </div>
-						<div class="navbar-nav" style="margin-right: 50px;">
-							<!-- Ajoutez une marge à gauche -->
-							{% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_USER') %}
-								<div class="nav-item dropdown d-flex align-items-center">
-									<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
-									<div class="dropdown-menu bg-light mt-2">
-										{# Problème à régler avec ces deux lignes #}
-										<a href="{{ path('app_profile_show') }}" class="dropdown-item">Consulter son profil</a>
-										{# <a href="{{ path('app_profile_edit', { 'id': client.id }) }}" class="dropdown-item">Modifier son profil</a> #}
-										<a href="testimonial.html" class="dropdown-item">Bien</a>
-										<a href="blog.html" class="dropdown-item">Quoi</a>
-										<a href="404.html" class="dropdown-item">Mettre</a>
+		<!-- Template Stylesheet -->
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<!-- Header Start -->
+			<div class="container-fluid sticky-top bg-danger">
+				<div class="container-fluid">
+					<nav class="navbar navbar-expand-lg navbar-light p-0">
+						<button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div
+							class="collapse navbar-collapse justify-content-between align-items-center w-100" id="navbarCollapse">
+							<!-- Aligner le logo à gauche avec une marge -->
+							<a href="{{ path('app_home') }}" class="navbar-brand mr-auto">
+								<img src="img\Logo.png" alt="propar" style="width: 80px; height: auto;">
+							</a>
+							<!-- Aligner les éléments de navigation au centre -->
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a href="{{ path('app_home')}}" class="nav-link active">Accueil</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ path('app_demande')}}" class="nav-link">Demande de Prestation</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ path('app_prestations')}}" class="nav-link">Prestations</a>
+								</li>
+								<li class="nav-item">
+									<a href="contact" class="nav-link">Contact</a>
+								</li>
+								{% if is_granted('ROLE_EMPLOYE') %}
+									<li class="nav-item">
+										<div class="nav-item dropdown d-flex align-items-center">
+											<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Consultation Technique</a>
+											<div class="dropdown-menu bg-light mt-2">
+												<a href="{{ path('app_demande_dashboard') }}" class="dropdown-item">Dashboard - Demandes</a>
+												<a href="{{ path('app_operation') }}" class="dropdown-item">Dashboard - Opérations</a>
+												<a href="{{ path('app_gestion_index') }}" class="dropdown-item">Dashboard - Gestion</a>
+											</div>
+										</div>
+									</li>
+									<li class="nav-item">
+										<span class="badge badge-success d-none d-lg-inline ml-2">{{ app.user.getRoles()[1] }}</span>
+										<span class="badge badge-success d-none d-lg-inline ml-2">MATRICULE : {{ app.user.getMatricule() }}</span>
+
+									</li>
+								{% elseif is_granted('ROLE_USER') %}
+									<li class="nav-item">
+										<div class="nav-item dropdown d-flex align-items-center">
+											<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil</a>
+											<div class="dropdown-menu bg-light mt-2">
+												<a href="{{ path('app_profile_show') }}" class="dropdown-item">Consulter son profil</a>
+												<a href="{{ path('app_profile_edit') }}" class="dropdown-item">Modifier son profil</a>
+											</div>
+										</div>
+									</li>
+								{% endif %}
+							</ul>
+							<div
+								class="navbar-nav ml-auto d-flex align-items-center" style="margin-right: 20px;">
+								<!-- Ajouter une marge à droite -->
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<div class="text-white px-4">
+										<p class="m-0 d-flex flex-column">
+											<span class="d-none d-lg-inline">Bonjour,</span>
+											<span>{{ app.user.getNom() ~ ' ' ~ app.user.getPrenom() }}</span>
+										</p>
 									</div>
-								</div>
-							{% elseif is_granted('ROLE_EMPLOYE') %}
-								<div class="nav-item dropdown d-flex align-items-center">
-									<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Consultation Technique</a>
-									<div class="dropdown-menu bg-light mt-2">
-										<a href="{{ path('app_demande_dashboard') }}" class="dropdown-item">Dashboard - Demandes</a>
-										<a href="{{ path('app_operation') }}" class="dropdown-item">Dashboard - Opérations</a>
-										<a href="{{ path('app_gestion_index') }}" class="dropdown-item">Gestion du personnel</a>
-										<a href="blog.html" class="dropdown-item">Quoi</a>
-										<a href="404.html" class="dropdown-item">Mettre</a>
-									</div>
-								</div>
-							{% endif %}
-							<span class="mx-2"></span>
-							<!-- Ajoutez cette ligne pour créer un espace -->
-							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<a href="{{ path('app_logout') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Déconnexion</a>
-							{% else %}
-								<a href="{{ path('app_register') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Inscription</a>
-								<a href="{{ path('app_login_client') }}" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Connexion</a>
-							{% endif %}
+									<a href="{{ path('app_logout') }}" class="btn btn-dark py-2 d-none d-lg-inline-block">Déconnexion</a>
+								{% else %}
+                                        <a href="{{ path('app_register') }}" class="btn btn-dark py-2 d-none d-lg-inline-block mr-2 px-4" style="margin-right: 10px;">Inscription</a>
+                                        <!-- Ajouter un espace entre Inscription et Connexion -->
+                                        <a href="{{ path('app_login_client') }}" class="btn btn-dark py-2 d-none d-lg-inline-block px-4">Connexion</a>
+								{% endif %}
+							</div>
 						</div>
-                    </div>
+					</nav>
+				</div>
+			</div>
+			<!-- Header End -->
+		</header>
 
-                    <!-- Logo au centre -->
+		<!-- Spinner Start -->
+		<div id="spinner" class="show bg-danger position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+			<div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div>
+		<!-- Spinner End -->
 
-                    <!-- Aligner les éléments à droite -->
-                </nav>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
-    {% endblock %}
-    {% block headerEmploye %}{% endblock %}
-</head>
-<body>
-    {% block body %}
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-danger position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-    {% endblock %}
-</body>
-{% block footer %}
-<footer>
-    <!-- Footer Start -->
-    <div class="container-fluid bg-danger text-white footer">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="home/client" class="d-inline-block mb-3">
-                        <img src="img\Logo.png" alt="propar" style="width: 100px; height: auto;">
-                    </a>
-                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus.</p>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>120 Rue du Luxembourg, 59100, Roubaix</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+33 6 21 45 68 95</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com/GREATTEACHERAZ">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/younes.azj/">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/azj.59/">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="mb-4">Nos Prestations</h5>
-                    <a class="btn btn-link" href="petite/prestation">Petite Prestation</a>
-                    <a class="btn btn-link" href="moyenne/prestation">Moyenne Prestation</a>
-                    <a class="btn btn-link" href="grosse/prestation">Grosse Prestation</a>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <h5 class="mb-4">Liens Populaires</h5>
-                    <a class="btn btn-link" href="">A Propos de Nous</a>
-                    <a class="btn btn-link" href="contact">Contacter Nous</a>
-                    <a class="btn btn-link" href="politique/confidentialite">Politique de Confidentialité</a>
-                    <a class="btn btn-link" href="">Termes & Conditions</a>
-                </div>
-            </div>
-        </div>
-        <div class="container wow fadeIn" data-wow-delay="0.1s">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="https://www.instagram.com/azj.59/">PROPAR</a>, All Right Reserved.
-                        Designed By <a class="border-bottom" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">Nassim, Nicolas, Fabien, Younes</a>
-                        Distributed by <a href="https://www.afpa.fr/centre/centre-de-roubaix">Afpa</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="{{ path('app_home') }}">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FAQs</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+		{% block body %}
+			<!-- Contenu de la page -->
+		{% endblock %}
 
-    <!-- Back to Top -->
-    <a href="{{ path('app_home') }}" class="btn btn-lg btn-primary btn-lg-square back-to-top bg-danger">
-        <i class="bi bi-arrow-up"></i>
-    </a>
+		<footer class ="container-fluid">
+			<!-- Footer Start -->
+			<div class="container-fluid bg-danger text-white footer">
+				<div class="container py-5">
+					<div class="row g-5">
+						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+							<a href="{{ path('app_home') }}" class="d-inline-block mb-3">
+								<img src="img\Logo.png" alt="propar" style="width: 100px; height: auto;">
+							</a>
+							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus.</p>
+						</div>
+						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+							<h5 class="mb-4">Get In Touch</h5>
+							<p>
+								<i class="fa fa-map-marker-alt me-3"></i>120 Rue du Luxembourg, 59100, Roubaix</p>
+							<p>
+								<i class="fa fa-phone-alt me-3"></i>+33 6 21 45 68 95</p>
+							<p>
+								<i class="fa fa-envelope me-3"></i>info@example.com</p>
+							<div class="d-flex pt-2">
+								<a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com/GREATTEACHERAZ">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/younes.azj/">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+								<a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/azj.59/">
+									<i class="fab fa-instagram"></i>
+								</a>
+								<a class="btn btn-square btn-outline-primary me-1" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+							<h5 class="mb-4">Nos Prestations</h5>
+							<a class="btn btn-link" href="{{ path('app_prestations') }}">Petite Prestation</a>
+							<a class="btn btn-link" href="{{ path('app_prestations') }}">Moyenne Prestation</a>
+							<a class="btn btn-link" href="{{ path('app_prestations') }}">Grosse Prestation</a>
+						</div>
+						<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+							<h5 class="mb-4">Liens Populaires</h5>
+							<a class="btn btn-link" href="{{ path('app_nous') }}">A Propos de Nous</a>
+							<a class="btn btn-link" href="contact">Contacter Nous</a>
+							<a class="btn btn-link" href="politique/confidentialite">Politique de Confidentialité</a>
+							<a class="btn btn-link" href="{{ path('app_terme') }}">Termes & Conditions</a>
+						</div>
+					</div>
+				</div>
+				<div class="container wow fadeIn" data-wow-delay="0.1s">
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+								&copy;
+								<a class="border-bottom" href="https://www.instagram.com/azj.59/">PROPAR</a>, All Right Reserved.
+																																																																																																												                        Designed By
+								<a class="border-bottom" href="https://www.linkedin.com/in/younes-azaaouaj-105041200/">Nassim, Nicolas, Fabien, Younes</a>
+								Distributed by
+								<a href="https://www.afpa.fr/centre/centre-de-roubaix">Afpa</a>
+							</div>
+							<div class="col-md-6 text-center text-md-end">
+								<div class="footer-menu">
+									<a href="{{ path('app_home') }}">Home</a>
+									<a href="cookies">Cookies</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer End -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/lib/wow/wow.min.js"></script>
-    <script src="/lib/easing/easing.min.js"></script>
-    <script src="/lib/waypoints/waypoints.min.js"></script>
-    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+			<!-- Back to Top -->
+			<a href="{{ path('app_home') }}" class="btn btn-lg btn-primary btn-lg-square back-to-top bg-danger">
+				<i class="bi bi-arrow-up"></i>
+			</a>
+		</footer>
 
-    <!-- Template Javascript -->
-    <script src="/js/main.js"></script>
-</footer>
-{% endblock %}
+		<!-- JavaScript Libraries -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="/lib/wow/wow.min.js"></script>
+		<script src="/lib/easing/easing.min.js"></script>
+		<script src="/lib/waypoints/waypoints.min.js"></script>
+		<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+		<!-- Template Javascript -->
+		<script src="/js/main.js"></script>
+	</body>
 </html>

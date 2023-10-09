@@ -15,7 +15,7 @@ class Operation
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?bool $status = null;
+    private ?bool $status = false;
 
     #[ORM\ManyToOne(inversedBy: 'operation')]
     #[ORM\JoinColumn(nullable: false)]
@@ -79,4 +79,11 @@ class Operation
 
         return $this;
     }
+    public function finish(): static
+    {
+        $this->status = true;
+        dump('Finish method called');
+        return $this;
+    }
+
 }

@@ -37,6 +37,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'employe', cascade: ['persist', 'remove'])]
     private ?Operation $operation = null;
 
+    
     private ?int $NombreOperationAcceptees = null;
 
 

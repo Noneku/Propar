@@ -31,8 +31,8 @@ class AppDataBase extends Fixture
             
             $prestation = new Prestation;
             
-            $prestation->setPrix(rand(1000, 6000));
-            $prestation->setNom($nomPrestation);
+            $prestation->setPrix(10000);
+            $prestation->setNom('Moyenne');
             $prestation->setDescription($descriptionPrestation);
             
             $manager->persist($prestation);
@@ -76,7 +76,7 @@ class AppDataBase extends Fixture
     
                 $operation->setDemande($demande);
                 $operation->setEmploye($employe);
-                $operation->setStatus(rand(0, 1));
+                $operation->setStatus(0);
                 $operation->setDateOperation($faker->dateTime);
                 (!$operation->getStatus()) ? $operation->setDateFinOperation($faker->dateTime) : null;
     

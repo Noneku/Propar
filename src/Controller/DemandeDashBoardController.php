@@ -24,11 +24,11 @@ class DemandeDashBoardController extends AbstractController
 
          // Récupérez les rôles de l'utilisateur
          $role = $user->getRoles();
-        $nombreMaxOperations = 0;
+            $nombreMaxOperations = 0;
          // Vérifiez si l'utilisateur a au moins deux rôles
              if (count($role) >= 2) {
              // Accédez au deuxième rôle (index 1 dans le tableau)
-            $deuxiemeRole = $role[1]; 
+                $deuxiemeRole = $role[1]; 
            
  
      // Faites quelque chose avec le deuxième rôle

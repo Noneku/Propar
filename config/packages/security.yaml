@@ -68,8 +68,6 @@ security:
                 path: /
             entry_point: App\Security\EmployeAuthenticator
 
-    access_control:
-
         # - { path: '^/profile', roles: ROLE_USER }
     
 
@@ -81,7 +79,7 @@ security:
 
     # Configuration de l'accès aux ressources
     access_control:
-    - { path: ^/gestion, roles: ROLE_EXPERT }
+    # - { path: ^/gestion, roles: ROLE_EXPERT }
     - { path: ^/demande, roles: [ROLE_SENIOR, ROLE_APPRENTI] }
     - { path: ^/traitement, roles: [ROLE_SENIOR, ROLE_APPRENTI] }
     - { path: ^/operation, roles: [ROLE_SENIOR,ROLE_APPRENTI] }

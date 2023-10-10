@@ -21,6 +21,7 @@
                     <th>Matricule</th>
                     <th>Date - Opération</th>
                     <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +33,6 @@
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
-                        <td>
-                            {{ operation.getEmploye().getMatricule() }} 
-                        </td>
                         <td>
                             <a href="{{ path('app_operation_edit', {'id': operation.id}) }}">
                                 <button class="

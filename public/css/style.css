@@ -424,8 +424,90 @@ img.animated.pulse {
     border-right: none; /* Suppression de la bordure à droite pour le dernier élément du menu */
 }
 
+
+/* Page Chiifre Affaires */
 .canva {
     width: 30%; /* Vous pouvez ajuster la largeur selon vos besoins */
     height: 30%; /* Vous pouvez ajuster la hauteur selon vos besoins */
     margin-left: 25%; /* mettre une marge a gauche pour le diagramme*/
 }
+
+
+/* Page profil */
+.profil {
+    margin: 5%;
+    margin-left: 25%;
+    background-color: #dc3545;
+    box-shadow: 5 10 10 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    height: 30%;
+    
+}
+
+h1 {
+    color: #fff;
+}
+
+dl {
+    margin-top: 20px;
+    color: #fff;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #fff;
+}
+
+dd {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Styles pour la section de l'édition du profil */
+.edit-profile {
+    margin: 5%;
+    margin-left: 25%;
+    background-color: #dc3545;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    width: 50%;
+    color: #fff;
+}
+
+.edit-profile h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.edit-profile dl {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.edit-profile dt {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.edit-profile dd {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Styles pour les champs du formulaire */
+.edit-profile input[type="text"],
+.edit-profile input[type="email"],
+.edit-profile input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+

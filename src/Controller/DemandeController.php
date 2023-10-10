@@ -8,15 +8,13 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DemandeController extends AbstractController
 {
     #[Route('/demande', name: 'app_demande')]
-    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {   
        // Obtenez toutes les prestations
     //    $prestations = $entityManager->getRepository(Prestation::class)->findAll();
@@ -47,12 +45,6 @@ class DemandeController extends AbstractController
            $entityManager->persist($demande);
            $entityManager->flush();
 
-           // Envoie un e-mail pour notifier la soumission de la demande
-           $this->sendNotificationEmail($user, $demande, $mailer);
-
-           // Informer l'utilisateur que la demande a bien été soumise
-           $this->addFlash('success', 'Votre demande a été soumise avec succès.');
-
            // Redirigez vers une autre page ou effectuez une autre action
            return $this->redirectToRoute('app_home');
        }
@@ -62,16 +54,5 @@ class DemandeController extends AbstractController
            'user' => $user,
            'form' => $form
        ]);
-   }
-
-   private function sendNotificationEmail($user, $demande, $mailer)
-   {
-       $email = (new Email())
-           ->from('stepropar@outlook.fr') // Remplacez par votre adresse e-mail
-           ->to($user->getEmail()) // Utilisez l'e-mail de l'utilisateur
-           ->subject('Nouvelle demande soumise')
-           ->html('<p>Votre demande a été soumise avec succès.</p>'); // Personnalisez le contenu de l'e-mail selon vos besoins
-
-       $mailer->send($email);
    }
 }

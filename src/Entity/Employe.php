@@ -80,7 +80,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(string $roles): static
     {
-        $this->roles[] = $roles;
+        $this->roles[1] = $roles;
 
         return $this;
     }

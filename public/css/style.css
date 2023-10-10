@@ -426,10 +426,34 @@ img.animated.pulse {
 
 
 /* Page Chiifre Affaires */
+
 .canva {
-    width: 30%; /* Vous pouvez ajuster la largeur selon vos besoins */
-    height: 30%; /* Vous pouvez ajuster la hauteur selon vos besoins */
-    margin-left: 25%; /* mettre une marge a gauche pour le diagramme*/
+    width: 75%;
+    height: 100%; /* Ajustez la hauteur selon vos besoins */
+    margin-bottom: 5%;
+}
+
+/* Ajoutez des styles Bootstrap pour le formulaire */
+.container-affaires .form-group {
+    margin-bottom: 5%;
+}
+
+/* Centrez le formulaire */
+.container-affaires form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+
+/* Ajoutez des styles Bootstrap pour les boutons */
+.container-affaires button[type="submit"] {
+    width: 100%;
+}
+
+/* Ajoutez un espace en dessous du résultat du calcul */
+.container-affaires p {
+    margin-top: 5%;
 }
 
 

@@ -27,7 +27,6 @@ class DemandeDashBoardController extends AbstractController
 
         // Récupérez les rôles de l'utilisateur
         $role = $user->getRoles();
-        $nombreMaxOperations = 0;
 
         // Vérifiez si l'utilisateur a au moins deux rôles
         if (count($role) >= 2) {
@@ -42,20 +41,15 @@ class DemandeDashBoardController extends AbstractController
             } elseif ($deuxiemeRole === "ROLE_APPRENTI") {
                 $nombreMaxOperations = 1;
             }
-        }
-
+        }       
         // Récupérez le nombre d'opérations déjà acceptées par l'utilisateur depuis la session
-        $nombreOperationsAcceptees = $session->get('NombreOperationAcceptees', 0);
 
-        if ($nombreOperationsAcceptees >= $nombreMaxOperations) {
-            //renvoi vers une page précisant que l'utilisateur a atteint le max d'opération qu'il peut gerer
-            return $this->redirectToRoute('max_operations_reached');
-        }
+        // if ($nombreOperationsAcceptees >= $nombreMaxOperations) {
+        //     //renvoi vers une page précisant que l'utilisateur a atteint le max d'opération qu'il peut gerer
+        //     return $this->redirectToRoute('max_operations_reached');
+        // }
 
         // Incrémentez le nombre d'opérations acceptées par l'utilisateur et mettez à jour la session
-        $nombreOperationsAcceptees++;
-
-        $session->set('NombreOperationAcceptees', $nombreOperationsAcceptees);
 
         return $this->render('demande_dashboard/index.html.twig', [
             'controller_name' => 'DemandeDashBoardController',

@@ -20,6 +20,7 @@
                     <th>Employé</th>
                     <th>Matricule</th>
                     <th>Date - Opération</th>
+                    <th>Actions</th>
 
                 </tr>
             </thead>
@@ -31,10 +32,14 @@
                         <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
-                        <td>{{ operation.getEmploye().getMatricule() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
-                        
-                            <td><a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
+                        <td>
+                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}">
+                                <button class="
+                                btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">
+                                Modifier
+                                </button>
+                            </a>
                             <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button>
                         </td>
                     </tr>

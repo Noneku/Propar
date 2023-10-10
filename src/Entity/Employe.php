@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[ORM\Entity(repositoryClass: EmployeRepository::class)]
 class Employe implements UserInterface, PasswordAuthenticatedUserInterface
@@ -36,9 +37,6 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'employe', cascade: ['persist', 'remove'])]
     private ?Operation $operation = null;
-
-    
-    private ?int $NombreOperationAcceptees = null;
 
 
     public function getId(): ?int
@@ -152,15 +150,18 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getNombreOperationAcceptees(): ?int
+    public function getNombreOperationAcceptees(EntityManagerInterface $entityManager): int
     {
-        return $this->NombreOperationAcceptees;
+        $query = $entityManager->createQuery('
+            SELECT COUNT(o.id)
+            FROM App\Entity\Operation o
+            WHERE o.status = 1
+            AND o.employe = :employe
+        ');
+
+        $query->setParameter('employe', $this);
+
+        return (int) $query->getSingleScalarResult();
     }
 
-    public function setNombreOperationAcceptees(?int $NombreOperationAcceptees): static
-    {
-        $this->NombreOperationAcceptees = $NombreOperationAcceptees;
-
-        return $this;
-    }   
 }

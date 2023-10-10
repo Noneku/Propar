@@ -23,25 +23,25 @@ class DemandeDashBoardController extends AbstractController
         $demandes = $entityManager->getRepository(Demande::class)->findAll();
 
         // Récupérez l'utilisateur actuellement connecté
-        $user = $this->getUser();
+        // $user = $this->getUser();
 
-        // Récupérez les rôles de l'utilisateur
-        $role = $user->getRoles();
+        // // Récupérez les rôles de l'utilisateur
+        // $role = $user->getRoles();
 
         // Vérifiez si l'utilisateur a au moins deux rôles
-        if (count($role) >= 2) {
-            // Accédez au deuxième rôle (index 1 dans le tableau)
-            $deuxiemeRole = $role[1];
+        // if (count($role) >= 2) {
+        //     // Accédez au deuxième rôle (index 1 dans le tableau)
+        //     $deuxiemeRole = $role[1];
 
-            // Faites quelque chose avec le deuxième rôle
-            if ($deuxiemeRole === "ROLE_EXPERT") {
-                $nombreMaxOperations = 5;
-            } elseif ($deuxiemeRole === "ROLE_SENIOR") {
-                $nombreMaxOperations = 3;
-            } elseif ($deuxiemeRole === "ROLE_APPRENTI") {
-                $nombreMaxOperations = 1;
-            }
-        }       
+        //     // // Faites quelque chose avec le deuxième rôle
+        //     // if ($deuxiemeRole === "ROLE_EXPERT") {
+        //     //     $nombreMaxOperations = 5;
+        //     // } elseif ($deuxiemeRole === "ROLE_SENIOR") {
+        //     //     $nombreMaxOperations = 3;
+        //     // } elseif ($deuxiemeRole === "ROLE_APPRENTI") {
+        //     //     $nombreMaxOperations = 1;
+        //     }
+        // }       
         // Récupérez le nombre d'opérations déjà acceptées par l'utilisateur depuis la session
 
         // if ($nombreOperationsAcceptees >= $nombreMaxOperations) {

@@ -23,9 +23,9 @@ class AppDataBase extends Fixture
             ];
 
         $faker = Faker::create('fr_FR');
-        
+        $totalPrestations = 0; // Variable pour stocker le nombre total de prestations créées
         //Create GapCount for avoid duplicates ID in database
-        $gapCount = 0;
+        
 
         foreach ($prestationsArray as $nomPrestation => $descriptionPrestation) {
             
@@ -37,9 +37,9 @@ class AppDataBase extends Fixture
             
             $manager->persist($prestation);
             
-            for ($g = $gapCount; $g < 20; $g++) { 
+            for ($g = 0; $g < 20; $g++) { 
+                $totalPrestations++; // Incrémente le nombre total de prestations créées
                 
-                $gapCount += $g;
 
                 $client = new Client();
                 $client->setNom($faker->firstName);

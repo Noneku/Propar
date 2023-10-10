@@ -44,24 +44,25 @@ class AffairesController extends AbstractController
             // Calculer le chiffre d'affaires total et les totaux par catégorie
             foreach ($operations as $operation) {
                 $demande = $operation->getDemande();
-
+            
                 if ($demande) {
-                    $prestationId = $demande->getPrestation()->getId();
-                    $prix = $demande->getPrestation()->getPrix();
-
+                    $prestation = $demande->getPrestation();
+                    $prix = $prestation->getPrix();
+                    $categorie = $prestation->getID(); 
+            
                     // Ajouter le prix de la prestation à la catégorie correspondante
-                    if ($prestationId == $prestationId) {
+                    if ($categorie == 5) {
                         $total1 += $prix;
-                    } elseif ($prestationId == $prestationId) {
+                    } elseif ($categorie == 6) {
                         $total2 += $prix;
-                    } elseif ($prestationId == $prestationId) {
+                    } elseif ($categorie == 7) {
                         $total3 += $prix;
                     }
-
+            
                     // Ajouter le prix de la prestation au chiffre d'affaires total
                     $chiffreAffaire += $prix;
                 }
-            }
+            }   
         }
 
         return $this->render('affaires/index.html.twig', [

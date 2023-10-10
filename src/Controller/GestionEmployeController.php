@@ -25,34 +25,32 @@ class GestionEmployeController extends AbstractController
     
 
     #[Route('/registration_employe', name: 'app_gestion_registration_employe', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager,UserPasswordHasherInterface $passwordHasher): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
-        
         $employe = new Employe();
         $form = $this->createForm(EmployeType::class, $employe);
         $form->handleRequest($request);
-        
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
-            $plainPassword=$form->get('plainPassword')->getData();
+            // Traitement du formulaire
+            $plainPassword = $form->get('plainPassword')->getData();
             $hashedPassword = $passwordHasher->hashPassword(
                 $employe,
                 $plainPassword
             );
             $employe->setPassword($hashedPassword);
-
+    
             $entityManager->persist($employe);
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_gestion_index', [], Response::HTTP_SEE_OTHER);
-        }
-
+        } 
+    
         return $this->render('gestion/registrationEmploye.html.twig', [
             'employe' => $employe,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
-
     #[Route('/{id}', name: 'app_gestion_show', methods: ['GET'])]
     public function show(Employe $employe): Response
     {

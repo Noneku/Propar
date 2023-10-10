@@ -20,6 +20,11 @@
                     <th>Employé</th>
                     <th>Matricule</th>
                     <th>Date - Opération</th>
+<<<<<<<<< Temporary merge branch 1
+
+=========
+                    <th>Actions</th>
+>>>>>>>>> Temporary merge branch 2
                 </tr>
             </thead>
             <tbody>
@@ -31,9 +36,21 @@
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
+<<<<<<<<< Temporary merge branch 1
+                        
+                            <td><a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
+=========
                         <td>
                             {{ operation.getEmploye().getMatricule() }} 
-                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}">
+                                <button class="
+                                btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">
+                                Modifier
+                                </button>
+                            </a>
+>>>>>>>>> Temporary merge branch 2
                             <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button>
                         </td>
                     </tr>

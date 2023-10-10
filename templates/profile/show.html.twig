@@ -4,8 +4,10 @@
 
 {% block title %}Profile{% endblock %}
 
+
 {% block body %}
-    <h1>Profile</h1>
+<div class="profil">
+    <h1>Profil</h1>
 
     <dl>
         <dt>Email:</dt>
@@ -25,4 +27,5 @@
     </dl>
 
     <a href="{{ path('app_profile_edit') }}" class="btn btn-primary">Modifier le profil</a>
+</div>
 {% endblock %}

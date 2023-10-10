@@ -3,7 +3,30 @@
 {% block title %}Edit Operation{% endblock %}
 
 {% block body %}
-    <h1>Edit Operation</h1>
+<div class="container mt-4 mb-4 bg-danger rounded p-4">
+    <h1 class="text-center mb-4">Modifier l'Opération</h1>
+
+    <form method="post" class="row g-3">
+        {{ form_start(form) }}
+        
+        <div class="col-12">
+            {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <!-- Ajoutez d'autres champs de formulaire de la même manière -->
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="{{ path('app_operation') }}" class="btn btn-secondary">Retour à la liste des opérations</a>
+        </div>
+        
+        {{ form_end(form) }}
+    </form>
+</div>
+
+    {# <h1>Edit Operation</h1>
+
+
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
@@ -12,6 +35,6 @@
 
     {{ form_end(form) }}
     
-    <a href="{{ path('app_operation') }}" class="btn btn-secondary">Retour à la liste des opérations</a>
+    <a href="{{ path('app_operation') }}" class="btn btn-secondary">Retour à la liste des opérations</a> #}
 {% endblock %}
 

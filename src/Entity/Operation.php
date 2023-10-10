@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\OperationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\OperationRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[ORM\Entity(repositoryClass: OperationRepository::class)]
 class Operation
@@ -108,6 +109,5 @@ class Operation
         dump('Finish method called');
         return $this;
     }
-
-
+    
 }

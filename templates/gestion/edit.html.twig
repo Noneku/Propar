@@ -8,6 +8,10 @@
         <h1>Modification du profil d'un employé</h1>
 
         <form method="post">
+
+            {# Inclusion du champ CSRF ici #}
+            {{ form_widget(form._token) }}
+
             <div class="form-group">
                 {{ form_label(form.matricule) }}
                 {{ form_widget(form.matricule, {'attr': {'class': 'form-control'}}) }}

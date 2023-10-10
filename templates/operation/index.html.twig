@@ -35,7 +35,7 @@
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
                         
                             <td><a href="{{ path('app_operation_edit', {'id': operation.id}) }}"><button class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">Modifier</button></a>
-                            <a "{{ path('app_email' }}"><button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button></a>
+                            <a "{{ path('app_select_client' }}"><button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button></a>
                         </td>
                     </tr>
                  {% endfor %}

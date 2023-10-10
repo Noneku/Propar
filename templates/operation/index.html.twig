@@ -3,13 +3,13 @@
 {% block title %}Hello operationDashBoardController!{% endblock %}
 
 {% block body %}
- <div class="container">
+<div class="container">
     <h1>Tableau de bord</h1>
-    
+
     <!-- Ajoutez la case à cocher pour filtrer les opérations terminées -->
     <label for="toggle-completed-operations">Afficher les opérations terminées</label>
     <input type="checkbox" id="toggle-completed-operations">
-    
+
     <div id="operations-table">
         <table class="table">
             <thead>
@@ -21,7 +21,6 @@
                     <th>Matricule</th>
                     <th>Date - Opération</th>
                     <th>Actions</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -32,22 +31,23 @@
                         <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
                         <td>{{ operation.getDemande().getClient().getNom() ~ ' ' ~  operation.getDemande().getClient().getPrenom()}}</td>
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
+                        <td>{{ operation.getEmploye().getMatricule() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
                         <td>
-                            <a href="{{ path('app_operation_edit', {'id': operation.id}) }}">
-                                <button class="
-                                btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">
-                                Modifier
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{ path('app_operation_edit', {'id': operation.id}) }}" class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">
+                                    Modifier
+                                </a>
+                                <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>
+                                    Terminer
                                 </button>
-                            </a>
-                            <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button>
+                            </div>
                         </td>
                     </tr>
-                 {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
     </div>
-    
 </div>
 
 <!-- Inclusion du script JavaScript externe -->

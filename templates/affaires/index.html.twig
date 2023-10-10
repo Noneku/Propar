@@ -3,27 +3,40 @@
 {% block title %}Hello AffairesController!{% endblock %}
 
 
-
 {% block body %}
-<h1>Calcul du Chiffre d'Affaires</h1>
+<div class="container mt-5">
+    <div class="row">
+       <div class="col-md-6 container-affaires">
+            <h1>Calcul du Chiffre d'Affaires</h1>
+                {{ form_start(form) }}
+    
+                    <div class="form-group">
+                        {{ form_label(form.dateEntree) }}
+                        {{ form_widget(form.dateEntree, { 'attr': {'class': 'form-control datepicker'}}) }}
+                    </div>
+    
+                    <div class="form-group">
+                        {{ form_label(form.dateSortie) }}
+                        {{ form_widget(form.dateSortie, { 'attr': {'class': 'form-control datepicker'}}) }}
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary">Calculer</button>
+                {{ form_end(form) }}
 
+                 {% if chiffreAffaire > 0 %}
+                    <p>Chiffre d'affaires pour la période sélectionnée : {{ chiffreAffaire }} €</p>
+                {% else %}
+                    <p>Aucun chiffre d'affaires calculé pour les dates sélectionnées.</p>
+                {% endif %}
+        </div>
 
-{{ form_start(form) }}
-{{ form_row(form.dateEntree) }}
-{{ form_row(form.dateSortie) }}
-<button type="submit">Calculer</button>
-{{ form_end(form) }}
-  
-
-
-{% if chiffreAffaire > 0 %}
-    <div class="canva">
-        <canvas id="myChart"></canvas>
+        <div class="col-md-6 container-diagramme">
+            <div class="canva">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
     </div>
-    <p>Chiffre d'affaires pour la période sélectionnée : {{ chiffreAffaire }} €</p>
-{% else %}
-    <p>Aucun chiffre d'affaires calculé pour les dates sélectionnées.</p>
-{% endif %}
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -47,5 +60,15 @@
             }
         }
     });
+
+
+    
+    // Activez le datepicker sur les éléments avec la classe 'datepicker'
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',  // Format de la date
+        language: 'fr',  // Langue (français dans cet exemple)
+        autoclose: true,  // Fermer automatiquement le calendrier après la sélection de la date
+    });
+
 </script>
 {% endblock %}

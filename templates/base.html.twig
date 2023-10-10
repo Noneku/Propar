@@ -79,7 +79,7 @@
 									<li class="nav-item">
 										<span class="badge badge-success d-none d-lg-inline ml-2">{{ app.user.getRoles()[1] }}</span>
 										<span class="badge badge-success d-none d-lg-inline ml-2">MATRICULE : {{ app.user.getMatricule() }}</span>
-										<span class="badge badge-success d-none d-lg-inline ml-2">Opérations en cours : </span>
+										{# <span class="badge badge-success d-none d-lg-inline ml-2">Opérations en cours : </span> #}
 									</li>
 								{% elseif is_granted('ROLE_USER') %}
 									<li class="nav-item">

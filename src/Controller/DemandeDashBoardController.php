@@ -41,9 +41,7 @@ class DemandeDashBoardController extends AbstractController
             } elseif ($deuxiemeRole === "ROLE_APPRENTI") {
                 $nombreMaxOperations = 1;
             }
-        }
-        $session->set('countOperation', 1256);
-        
+        }       
         // Récupérez le nombre d'opérations déjà acceptées par l'utilisateur depuis la session
 
         // if ($nombreOperationsAcceptees >= $nombreMaxOperations) {

@@ -34,5 +34,6 @@
         $dompdf->stream('client.pdf', ['Attachment' => false]);
     
     }
+    
 }
  

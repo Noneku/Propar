@@ -12,6 +12,7 @@
                     <th>Prestation</th>
                     <th>Client</th>
                     <th>Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,10 +21,9 @@
                         <td>{{ demande.getId() }}</td>
                         <td>{{ demande.getPrestation().getNom() }}</td>
                         <td>{{ demande.getClient().getNom() }} {{ demande.getClient().getPrenom() }}</td>
-                        <td>{{ demande.getDateDemande()|date('Y-m-d H:i:s')  }}</td>
-                    </tr>                   
-                        <td><a href="{{ path('app_open_operation', { 'id': demande.getId() }) }}" class="btn btn-danger">Accepter</a></td>
-                        <td><button class="btn btn-primary">Plus d'infos</button></td>
+                        <td>{{ demande.getDateDemande()|date('Y-m-d H:i:s')  }}</td>                 
+                        <td><a href="{{ path('app_open_operation', { 'id': demande.getId() }) }}" class="btn btn-danger">Accepter</a>
+                        <button class="btn btn-primary">Plus d'infos</button></td>
                     </tr>
                     
                  {% endfor %}

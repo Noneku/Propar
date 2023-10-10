@@ -53,7 +53,9 @@
                                 </a>
 
                                 <!-- Bouton "Terminer" (désactivé pour les opérations terminées) -->
-                                <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}d-none{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>Terminer</button>
+                               <button class="btn btn-primary bg-danger finish-operation {% if isCompleted %}d-none{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %} data-email-url="{{ path('app_email') }}">Terminer</button>
+
+
                             </td>
                         </tr>
                     {% endfor %}

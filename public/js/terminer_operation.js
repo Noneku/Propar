@@ -23,5 +23,19 @@ toggleCompletedCheckbox.addEventListener('change', function() {
         operation.style.display = toggleCompletedCheckbox.checked ? 'table-row' : 'none';
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    // Sélectionnez tous les boutons "Terminer" avec la classe .finish-operation
+    const finishButtons = document.querySelectorAll('.finish-operation');
+
+    finishButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const emailUrl = button.getAttribute('data-email-url');
+
+            // Redirigez l'utilisateur vers votre contrôleur d'e-mail
+            window.location.href = emailUrl;
+        });
+    });
+});
+
 
 

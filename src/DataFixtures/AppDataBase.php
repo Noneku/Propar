@@ -72,15 +72,15 @@ class AppDataBase extends Fixture
     
                 $manager->persist($demande);
     
-                $operation = new Operation();
+                // $operation = new Operation();
     
-                $operation->setDemande($demande);
-                $operation->setEmploye($employe);
-                $operation->setStatus(rand(0, 1));
-                $operation->setDateOperation($faker->dateTime);
-                (!$operation->getStatus()) ? $operation->setDateFinOperation($faker->dateTime) : null;
+                // $operation->setDemande($demande);
+                // $operation->setEmploye($employe);
+                // $operation->setStatus(rand(0, 1));
+                // $operation->setDateOperation($faker->dateTime);
+                // (!$operation->getStatus()) ? $operation->setDateFinOperation($faker->dateTime) : null;
     
-                $manager->persist($operation);
+                // $manager->persist($operation);
 
             }
             $manager->flush();

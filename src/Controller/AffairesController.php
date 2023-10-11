@@ -50,7 +50,7 @@ class AffairesController extends AbstractController
                     $prix = $demande->getPrestation()->getPrix();
 
                     // Ajouter le prix de la prestation à la catégorie correspondante
-                    if ($prestationId == $prestationId) {
+                    if ($prestationId == 10) {
                         $total1 += $prix;
                     } elseif ($prestationId == $prestationId) {
                         $total2 += $prix;

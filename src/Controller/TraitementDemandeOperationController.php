@@ -46,24 +46,31 @@ class TraitementDemandeOperationController extends AbstractController
         return $this->redirectToRoute('app_operation');
     }
 
-    #[Route('/close/{id}', name: 'app_close_operation')]
-    public function sendEmail(MailerInterface $mailer, int $id, EntityManagerInterface $entitymanager): Response
+    #[Route('/close/{id}/{id_operation}', name: 'app_close_operation')]
+    public function sendEmail(MailerInterface $mailer, int $id,int $id_operation, EntityManagerInterface $entitymanager): Response
     {
         $client = $entitymanager->getRepository(Client::class)->find($id);
+        $operation = $entitymanager->getRepository(Operation::class)->find($id_operation);
         $emailClient = $client->getEmail();
 
         // Générez le PDF en utilisant la méthode generatePdf
-        $pdfFilePath = $this->pdf->generatePdf($client);
+        $pdfFilePath = $this->pdf->generatePdf($client, $operation);
 
         // Vérifiez si le chemin du fichier PDF existe
-        // if (file_exists($pdfFilePath)) {
+        if (file_exists($pdfFilePath)) {
             // Créez l'e-mail
             $email = (new Email())
-                ->from('mailtrap@example.com')
+                ->from('ProparEntreprise@gmail.com')
                 ->to($emailClient)
-                ->subject('Time for Symfony Mailer!')
+                ->subject('Votre Facture Propar')
                 ->text('plaplapalaplap')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->html("<p>Cher client,</p>
+                <p>Merci d'avoir choisi Propar pour vos besoins en services. Nous sommes ravis de vous avoir comme client et nous vous remercions pour votre confiance.</p>
+                <p>À Propar, notre engagement est de fournir des services de qualité exceptionnelle qui répondent à vos besoins et dépassent vos attentes. Nous travaillons continuellement pour vous offrir la meilleure expérience possible.</p>
+                <p>Nous sommes à votre disposition pour toute question ou assistance supplémentaire. N'hésitez pas à nous contacter à tout moment.</p>
+                <p>Encore une fois, merci d'avoir choisi Propar. Nous sommes impatients de vous servir et de vous accompagner dans votre parcours.</p>
+                <p>Bien cordialement,</p>
+                <p>L'équipe Propar</p>");
 
             // Joignez le fichier PDF au courriel
             $email->attachFromPath($pdfFilePath, 'client.pdf', 'application/pdf');
@@ -73,9 +80,9 @@ class TraitementDemandeOperationController extends AbstractController
 
             // Supprimez le fichier PDF temporaire après l'envoi
             unlink($pdfFilePath);
-        // }
+        }
 
         // Retournez une réponse HTTP appropriée
-        return new Response('Email Envoyé');
+        return $this->redirectToRoute('app_operation', [], Response::HTTP_SEE_OTHER);
     }
 }

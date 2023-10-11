@@ -38,7 +38,7 @@
                                 <a href="{{ path('app_operation_edit', {'id': operation.id}) }}" class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">
                                     Modifier
                                 </a>
-                                <a href="{{ path('app_close_operation', {'id': operation.getDemande().getClient().getId()}) }}" class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>
+                                <a href="{{ path('app_close_operation', {'id': operation.getDemande().getClient().getId(), 'id_operation': operation.getId()}) }}" class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>
                                     Terminer
                                 </a>
                             </div>

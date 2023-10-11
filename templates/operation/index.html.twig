@@ -34,10 +34,10 @@
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
                         <td>{{ operation.getEmploye().getMatricule() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
-                        <td> {% if isInProgress %}
-                                    En cours
-                                {% else %}
+                        <td> {% if isCompleted %}
                                     Terminée
+                                {% else %}
+                                    En cours
                                 {% endif %}
                             </td>
                         <td>

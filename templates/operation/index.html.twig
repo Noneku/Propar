@@ -20,6 +20,7 @@
                     <th>Employé</th>
                     <th>Matricule</th>
                     <th>Date - Opération</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -33,12 +34,18 @@
                         <td>{{ operation.getEmploye().getNom() ~ ' ' ~ operation.getEmploye().getPrenom() }}</td>
                         <td>{{ operation.getEmploye().getMatricule() }}</td>
                         <td>{{ operation.getDateOperation()|date('Y-m-d H:i:s') }}</td>
+                        <td> {% if isInProgress %}
+                                    En cours
+                                {% else %}
+                                    Terminée
+                                {% endif %}
+                            </td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <a href="{{ path('app_operation_edit', {'id': operation.id}) }}" class="btn btn-primary bg-danger {% if isCompleted %}disabled{% endif %}">
+                                <a href="{{ path('app_operation_edit', {'id': operation.id}) }}" class="btn btn-warning finish-operation {% if isCompleted %}disabled{% endif %}" style="margin-right: 1rem;">
                                     Modifier
                                 </a>
-                                <a href="{{ path('app_close_operation', {'id': operation.getDemande().getClient().getId(), 'id_operation': operation.getId()}) }}" class="btn btn-primary bg-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>
+                                <a href="{{ path('app_close_operation', {'id': operation.getDemande().getClient().getId(), 'id_operation': operation.getId()}) }}" class="btn btn-danger finish-operation {% if isCompleted %}disabled{% endif %}" data-operation-id="{{ operation.id }}" {% if isCompleted %}disabled{% endif %}>
                                     Terminer
                                 </a>
                             </div>

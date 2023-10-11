@@ -1,15 +1,117 @@
-<!-- templates/pdf_generator/index.html.twig -->
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Informations client</title>
+    <title>Facture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../img/Logo.png'); /* Chemin vers l'image */
+            background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond avec opacité */
+            background-size: cover; /* Ajuster la taille de l'image au conteneur */
+            background-repeat: no-repeat; /* Ne pas répéter l'image */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(245, 245, 245, 0.8); /* Couleur de fond du conteneur avec opacité */
+            padding: 20px;
+        }
+        .invoice {
+            flex: 1;
+        }
+        .address {
+            flex: 1;
+        }
+        .invoice-header {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .invoice-header h1 {
+            font-size: 24px;
+        }
+        .invoice-header p {
+            font-size: 16px;
+        }
+        .client-info {
+            margin-top: 20px;
+        }
+        .client-info p {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .client-info strong {
+            font-weight: normal;
+        }
+        .address-info {
+            margin-top: 20px;
+        }
+        .address-info p {
+            font-size: 16px;
+        }
+        .complementary-info {
+            margin-top: 20px;
+        }
+        .complementary-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .complementary-info th, .complementary-info td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+        .complementary-info th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .complementary-info td {
+            background-color: #f5f5f5;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Informations client</h1>
-    <p>Nom : {{ client.nom }}</p>
-    <p>Prénom : {{ client.prenom }}</p>
-    <p>Adresse : {{ client.adresse }}</p>
-    <p>Téléphone : {{ client.tel }}</p>
-    <p>Email : {{ client.email }}</p>
+    <div class="container">
+        <div class="invoice">
+            <div class="invoice-header">
+                <h1 class="display-4">Facture</h1>
+            </div>
+            <div class="client-info">
+                <p><strong>Nom :</strong> {{ client.nom }}</p>
+                <p><strong>Prénom :</strong> {{ client.prenom }}</p>
+                <p><strong>Adresse :</strong> {{ client.adresse }}</p>
+                <p><strong>Téléphone :</strong> {{ client.tel }}</p>
+                <p><strong>Email :</strong> {{ client.email }}</p>
+            </div>
+        </div>
+        <div class="address">
+            <p>Entreprise : Propar</p>
+            <p>Adresse de l'entreprise :</p>
+            <p>120 rue du Luxembourg à Roubaix</p>
+        </div>
+    </div>
+
+    <div class="complementary-info">
+        <h1>Informations Complémentaires</h1>
+        <table>
+            <tr>
+                <th>Type Prestation</th>
+                <th>Montant HT</th>
+                <th>Montant TVA</th>
+                <th>Montant TTC</th>
+            </tr>
+            <tr>
+                <td>{{ operation.getDemande().getPrestation().getNom() }}</td>
+                <td>{{ operation.getDemande().getPrestation().getPrix() }} €</td>
+                <td>{{ operation.getDemande().getPrestation().getPrix() * 0.2 }} €</td>
+                <td>{{ operation.getDemande().getPrestation().getPrix() * 1.2 }} €</td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
-
